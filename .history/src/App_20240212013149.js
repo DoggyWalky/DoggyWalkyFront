@@ -1,11 +1,9 @@
+import './App.css';
 import Login from './Login';
-import Register from './Register';
-
+import { Outlet } from 'react-router-dom';
 function App() {
   return (
-    <>
-      <Register />
-    </>
+
   );
 }
 
