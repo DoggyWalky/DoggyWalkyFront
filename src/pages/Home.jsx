@@ -1,5 +1,10 @@
 import React from 'react';
+import Introduce from '../components/Introduce';
 
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <>
+      <Introduce />
+    </>
+  );
 }

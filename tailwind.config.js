@@ -6,8 +6,8 @@ module.exports = {
       colors: {
         brand: '#F96162',
       },
-      logoImage: {
-        logo: `url('../public/images/logo.png')`,
+      width: {
+        introduceImg: '37rem',
       },
     },
   },
