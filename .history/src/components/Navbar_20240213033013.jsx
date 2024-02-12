@@ -12,17 +12,11 @@ export default function Navbar() {
         </div>
       </Link>
       <nav className='flex items-center gap-4 font-semibold'>
-        <Link to='/Posts' className='text-lg'>
+        <Link to='/Posts' className='text-md'>
           Post
         </Link>
         <Link to='/Posts/new' className='text-2xl'>
           <HiPencilSquare />
-        </Link>
-        <Link to='/Login' className='text-lg'>
-          Login
-        </Link>
-        <Link to='/Register' className='text-lg'>
-          Register
         </Link>
       </nav>
     </header>

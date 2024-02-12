@@ -5,7 +5,7 @@ export default function Introduce() {
   return (
     <section>
       <div className='flex pt-20 justify-between'>
-        <div className='relative text-center top-36 ml-20'>
+        <div className='relative text-center top-32 ml-16'>
           <ReactTyped
             strings={['DoggyWalky']}
             typeSpeed={80} //타이핑 속도
@@ -14,11 +14,8 @@ export default function Introduce() {
             showCursor={false}
             className='text-5xl font-bold'
           />
-
-          <p className='text-2xl'>
-            <br />
-            We connect people with their dog
-          </p>
+          <br />
+          <p className='text-2xl'>We connect people with their dog</p>
         </div>
         <div className='w-introduceImg rounded-full overflow-hidden mr-10'>
           <img

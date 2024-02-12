@@ -15,14 +15,8 @@ export default function Navbar() {
         <Link to='/Posts' className='text-lg'>
           Post
         </Link>
-        <Link to='/Posts/new' className='text-2xl'>
+        <Link to='/Posts/new' className='text-xl'>
           <HiPencilSquare />
-        </Link>
-        <Link to='/Login' className='text-lg'>
-          Login
-        </Link>
-        <Link to='/Register' className='text-lg'>
-          Register
         </Link>
       </nav>
     </header>

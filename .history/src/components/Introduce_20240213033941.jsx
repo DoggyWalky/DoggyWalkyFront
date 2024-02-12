@@ -10,7 +10,7 @@ export default function Introduce() {
             strings={['DoggyWalky']}
             typeSpeed={80} //타이핑 속도
             //    backSpeed={25} //타이핑 지우는 속도
-            loop={false} //반복할건지
+            loop={true} //반복할건지
             showCursor={false}
             className='text-5xl font-bold'
           />

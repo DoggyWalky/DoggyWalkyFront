@@ -5,7 +5,7 @@ export default function Introduce() {
   return (
     <section>
       <div className='flex pt-20 justify-between'>
-        <div className='relative text-center top-36 ml-20'>
+        <div className='relative text-center top-32 ml-16'>
           <ReactTyped
             strings={['DoggyWalky']}
             typeSpeed={80} //타이핑 속도

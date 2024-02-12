@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <header className='flex justify-between border-b border-gray-300 pt-4 pb-3'>
       <Link to='/'>
-        <div className='w-56'>
+        <div className='w-60'>
           <img className='w-full' src='images/logo.png' alt='logo' />
         </div>
       </Link>
@@ -17,12 +17,6 @@ export default function Navbar() {
         </Link>
         <Link to='/Posts/new' className='text-2xl'>
           <HiPencilSquare />
-        </Link>
-        <Link to='/Login' className='text-lg'>
-          Login
-        </Link>
-        <Link to='/Register' className='text-lg'>
-          Register
         </Link>
       </nav>
     </header>
