@@ -2,15 +2,15 @@ import React from 'react';
 
 export default function LoginDetail() {
   return (
-    <div className='flex relative justify-center items-center mt-44 '>
+    <div className='flex relative justify-center items-center mt-56 '>
       <content className='ml-36'>
         <p className='font-bold text-7xl'> DoggyWalky</p>
-        <p className=' text-2xl mt-7 mr-20 '>
+        <p className=' text-2xl mt-7 mr- '>
           Loremvelit nobis possimus beatae corporis vel ad fuga sit quibusdam
           voluptate eligendi optio inventore libero, ea esse, quae ducimus?
         </p>
       </content>
-      <login className='mr-64'>
+      <login className='mr-96'>
         <p className='font-bold text-5xl'>Login</p>
         <div className=' text-2xl mt-10 '>
           <div>
