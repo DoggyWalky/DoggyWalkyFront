@@ -8,8 +8,6 @@ export default function LoginDetail() {
         <p className=' text-2xl mt-7 mr-20 '>
           Loremvelit nobis possimus beatae corporis vel ad fuga sit quibusdam
           voluptate eligendi optio inventore libero, ea esse, quae ducimus?
-          Loremvelit nobis possimus beatae corporis vel ad fuga sit quibusdam
-          voluptate eligendi optio inventore libero, ea esse, quae ducimus?
         </p>
       </content>
       <login className='mr-64'>
