@@ -22,14 +22,10 @@ export default function Navbar() {
   }, [handleScroll]);
 
   return (
-    <div
-      className={`fixed z-50 top-0 w-full left-0 transition-all duration-200 ease-in-out bg-opacity-0  ${
-        isScroll ? 'shadow-md bg-white bg-opacity-100  ' : ''
-      }`}
-    >
+    <div className='sticky z-1000 transition-all duration-200 ease-in-out top-0 w-full'>
       <header
-        className={`flex max-w-screen-xl mx-auto justify-between align-center pt-4 pb-3 h-100  ${
-          isScroll ? ' ' : ''
+        className={`flex justify-between border-b border-gray-300 pt-4 pb-3 ${
+          isScroll ? 'fixed top-0 left-0 bg-white shadow-md w-full z-10' : ''
         }`}
       >
         <Link to='/'>

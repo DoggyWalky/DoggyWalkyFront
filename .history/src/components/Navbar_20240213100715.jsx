@@ -23,8 +23,8 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed z-50 top-0 w-full left-0 transition-all duration-200 ease-in-out bg-opacity-0  ${
-        isScroll ? 'shadow-md bg-white bg-opacity-100  ' : ''
+      className={`fixed z-50 top-0 w-full left-0 transition-all duration-200 ease-in-out bg-white ${
+        isScroll ? 'shadow-md  ' : ''
       }`}
     >
       <header

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ReactTyped } from 'react-typed';
 import useScrollFadeIn from '../hooks/useScrollFadeIn';
 import useScrollClipPath from '../hooks/useScrollClipPath';
 
@@ -10,7 +11,13 @@ const Introduce = () => {
     <>
       <section className=' flex justify-between items-center py-28'>
         <div className='text-center ml-16'>
-          <h2 className='text-5xl font-bold'>DoggyWalky</h2>
+          <ReactTyped
+            strings={['DoggyWalky']}
+            typeSpeed={80}
+            loop={false}
+            showCursor={false}
+            className='text-5xl font-bold'
+          />
           <p className='text-2xl'>
             <br />
             We connect people with their dog

@@ -22,14 +22,10 @@ export default function Navbar() {
   }, [handleScroll]);
 
   return (
-    <div
-      className={`fixed z-50 top-0 w-full left-0 transition-all duration-200 ease-in-out bg-opacity-0  ${
-        isScroll ? 'shadow-md bg-white bg-opacity-100  ' : ''
-      }`}
-    >
+    <>
       <header
-        className={`flex max-w-screen-xl mx-auto justify-between align-center pt-4 pb-3 h-100  ${
-          isScroll ? ' ' : ''
+        className={`flex fixed justify-between border-b border-gray-300 pt-4 pb-3 transition-all duration-200 ease-in-out w-full h-100 z-100 ${
+          isScroll ? 'shadow-md' : ''
         }`}
       >
         <Link to='/'>
@@ -52,6 +48,6 @@ export default function Navbar() {
           </Link>
         </nav>
       </header>
-    </div>
+    </>
   );
 }

@@ -1,16 +1,23 @@
 import React from 'react';
+import { ReactTyped } from 'react-typed';
 import useScrollFadeIn from '../hooks/useScrollFadeIn';
-import useScrollClipPath from '../hooks/useScrollClipPath';
 
 const Introduce = () => {
-  const animatedItem1 = useScrollFadeIn('right', 1, 0);
-  const animatedImage = useScrollClipPath('left', 1, 0);
+  const animatedItem1 = useScrollFadeIn('left', 1, 0);
+  const animatedItem2 = useScrollFadeIn('up', 1, 0.2);
+  const animatedItem3 = useScrollFadeIn('up', 1, 0.3);
 
   return (
-    <>
-      <section className=' flex justify-between items-center py-28'>
-        <div className='text-center ml-16'>
-          <h2 className='text-5xl font-bold'>DoggyWalky</h2>
+    <section>
+      <div className='flex pt-20 justify-between'>
+        <div className='relative text-center top-36 ml-20' {...animatedItem1}>
+          <ReactTyped
+            strings={['DoggyWalky']}
+            typeSpeed={80}
+            loop={false}
+            showCursor={false}
+            className='text-5xl font-bold'
+          />
           <p className='text-2xl'>
             <br />
             We connect people with their dog
@@ -23,25 +30,25 @@ const Introduce = () => {
             alt='introduceImg1'
           />
         </div>
-      </section>
-      <section className='py-28 flex items-center justify-between'>
-        <div className='w-introduceImg ml-10'>
+      </div>
+
+      <div className='flex pt-28 justify-between mt-28'>
+        <div className='w-introduceImg ml-10' {...animatedItem3}>
           <img
             className='w-full'
             src='images/introduceImg2.png'
             alt='introduceImg2'
-            {...animatedImage}
           />
         </div>
-        <div className=' text-center mr-16'>
+        <div className='relative text-center top-32 mr-16'>
           <h1 className='text-5xl font-bold'>간편하게</h1>
           <br />
           <p className='text-2xl'>We connect people with their dog</p>
         </div>
-      </section>
+      </div>
 
-      <section className='py-28 flex items-center  justify-between '>
-        <div className='text-center ml-16' {...animatedItem1}>
+      <div className='flex pt-28 justify-between mt-36'>
+        <div className='relative text-center top-32 ml-16' {...animatedItem3}>
           <h1 className='text-5xl font-bold'>실시간 이동 경로 확인</h1>
           <br />
           <p className='text-2xl'>We connect people with their dog</p>
@@ -53,8 +60,8 @@ const Introduce = () => {
             alt='introduceImg3'
           />
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

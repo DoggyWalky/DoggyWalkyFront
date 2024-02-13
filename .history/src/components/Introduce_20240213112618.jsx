@@ -1,4 +1,5 @@
 import React from 'react';
+import { ReactTyped } from 'react-typed';
 import useScrollFadeIn from '../hooks/useScrollFadeIn';
 import useScrollClipPath from '../hooks/useScrollClipPath';
 
