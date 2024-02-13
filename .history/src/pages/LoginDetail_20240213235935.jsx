@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function LoginDetail() {
   return (
-    <div className='flex relative justify-center items-center mt-32  py-20 bg-gradient-to-tl from-yellow-100 via-white to-cyan-100'>
+    <div className='flex relative justify-center items-center mt-44  bg-gradient-to-tl from-rose-100 to-teal-100'>
       <content className='ml-36 '>
         <p className='font-bold text-7xl'> DoggyWalky</p>
         <p className=' text-2xl mt-7 mr-20  '>

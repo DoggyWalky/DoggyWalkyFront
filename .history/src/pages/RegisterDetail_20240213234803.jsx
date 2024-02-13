@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function RegisterDetail() {
   return (
-    <div className='flex flex-col items-center mt-3 py-10 w-1/2 m-auto shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] rounded-xl'>
+    <div className='fixed flex-col top-10 right-0 bottom-0 left-0 flex items-center justify-center shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] '>
       <p className='font-bold text-5xl'>Register</p>
       <div className='text-2xl mt-10'>
         <p>E-mail</p>
