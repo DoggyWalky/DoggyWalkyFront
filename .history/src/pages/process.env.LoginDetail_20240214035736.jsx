@@ -4,6 +4,22 @@ import useScrollFadeIn from '../hooks/useScrollFadeIn';
 const LoginScroll = () => {
   const animatedLogin = useScrollFadeIn('up', 1, 0);
 
+  const SocialLogin = () => {
+    const NAVER_AUTH_URL = `http://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URL}&state=cosegu`;
+
+    const loginHandler = () => {
+      window.location.href = NAVER_AUTH_URL;
+    };
+    return (
+      <div>
+        <button onClick={loginHandler}>
+          {/* 여기에 네이버 아이콘 등을 추가할 수 있습니다 */}
+          Login with Naver
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div className='flex relative justify-center items-center rounded-xl mt-32  py-20 bg-gradient-to-tl from-yellow-200 via-white to-cyan-200'>
       <content className='ml-36 '>
@@ -35,6 +51,7 @@ const LoginScroll = () => {
           </div>
         </div>
         <div className='text-2xl mt-10 '>
+          {/* 수정 전에는 S.BtnWrap과 S.Button을 사용했으나 해당 컴포넌트나 스타일이 없으므로 일반 버튼으로 대체 */}
           <button className=' py-1 px-5 ml-2 mr-2  border-2 border-black rounded-xl '>
             Register
           </button>

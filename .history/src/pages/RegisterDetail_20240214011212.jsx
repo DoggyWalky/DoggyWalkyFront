@@ -6,7 +6,7 @@ const RegisterScroll = () => {
 
   return (
     <div
-      className='flex flex-col items-center mt-24 py-3 w-2/5 m-auto shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] rounded-xl'
+      className='flex flex-col items-center my-24 py-3 w-2/5 m-auto shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] rounded-xl'
       {...animatedRegister}
     >
       <p className='font-bold text-5xl'>Register</p>

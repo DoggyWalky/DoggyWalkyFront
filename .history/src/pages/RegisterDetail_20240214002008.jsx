@@ -1,14 +1,8 @@
 import React from 'react';
-import useScrollFadeIn from '../hooks/useScrollFadeIn';
 
-const RegisterScroll = () => {
-  const animatedRegister = useScrollFadeIn('up', 1, 0);
-
+export default function RegisterDetail() {
   return (
-    <div
-      className='flex flex-col items-center mt-24 py-3 w-2/5 m-auto shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] rounded-xl'
-      {...animatedRegister}
-    >
+    <div className='flex flex-col items-center mt-24 py-7 w-1/2 m-auto shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] rounded-xl'>
       <p className='font-bold text-5xl'>Register</p>
       <div className='text-2xl mt-10'>
         <p>E-mail</p>
@@ -46,6 +40,4 @@ const RegisterScroll = () => {
       </button>
     </div>
   );
-};
-
-export default RegisterScroll;
+}

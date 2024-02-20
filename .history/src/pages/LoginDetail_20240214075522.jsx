@@ -20,7 +20,7 @@ const LoginScroll = () => {
         <p className='font-bold text-5xl'>Login</p>
         <div className=' text-2xl mt-10 '>
           <div>
-            <h3>E-mail</h3>
+            {/* <h3>E-mail</h3>
             <input
               className='mt-3 border-2 border-gray-400 rounded-xl '
               type='text'
@@ -31,7 +31,7 @@ const LoginScroll = () => {
             <input
               className='mt-3 border-2 border-gray-400 rounded-xl '
               type='password'
-            />
+            /> */}
           </div>
         </div>
         <div className='text-2xl mt-10 '>

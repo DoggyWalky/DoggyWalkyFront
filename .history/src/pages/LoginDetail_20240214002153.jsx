@@ -1,9 +1,6 @@
 import React from 'react';
-import useScrollFadeIn from '../hooks/useScrollFadeIn';
 
-const LoginScroll = () => {
-  const animatedLogin = useScrollFadeIn('up', 1, 0);
-
+export default function LoginDetail() {
   return (
     <div className='flex relative justify-center items-center rounded-xl mt-32  py-20 bg-gradient-to-tl from-yellow-200 via-white to-cyan-200'>
       <content className='ml-36 '>
@@ -13,10 +10,7 @@ const LoginScroll = () => {
           voluptate eligendi optio inventore libero, ea esse, quae ducimus?
         </p>
       </content>
-      <div
-        className='mr-64 p-4 border shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white rounded-xl '
-        {...animatedLogin}
-      >
+      <div className='mr-64 p-4 border shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-white rounded-xl'>
         <p className='font-bold text-5xl'>Login</p>
         <div className=' text-2xl mt-10 '>
           <div>
@@ -45,6 +39,4 @@ const LoginScroll = () => {
       </div>
     </div>
   );
-};
-
-export default LoginScroll;
+}

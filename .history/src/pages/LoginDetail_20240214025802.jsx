@@ -4,6 +4,21 @@ import useScrollFadeIn from '../hooks/useScrollFadeIn';
 const LoginScroll = () => {
   const animatedLogin = useScrollFadeIn('up', 1, 0);
 
+  const SocialLogin = () => {
+    const NAVER_AUTH_URL = `http://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URL}&state=cosegu`;
+
+    const loginHandler = () => {
+      window.location.href = NAVER_AUTH_URI;
+    };
+    return (
+      <S.BtnWrap>
+        <S.Button onclick={loginHandler}>
+          <SiNaver size='18px' className='icon' />
+        </S.Button>
+      </S.BtnWrap>
+    );
+  };
+
   return (
     <div className='flex relative justify-center items-center rounded-xl mt-32  py-20 bg-gradient-to-tl from-yellow-200 via-white to-cyan-200'>
       <content className='ml-36 '>
