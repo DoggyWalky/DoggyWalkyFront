@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Button from '../components/ui/Button';
+import Button from './ui/Button';
 
-export default function NewPost() {
+export default function NewModifyProduct() {
   const [isChecked, setChecked] = useState(false);
 
   const handleCheckboxChange = (event) => {
@@ -10,7 +10,7 @@ export default function NewPost() {
 
   return (
     <section className='flex w-full h-screen  items-center justify-center'>
-      <div className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] py-16 px-8 rounded-md'>
+      <div className='shadow-[0_3px_10px_rgb(0,0,0,0.2)] py-16 px-8'>
         <form className='grid px-12 justify-center gap-8'>
           <input
             type='text'

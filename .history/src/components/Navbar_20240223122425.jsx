@@ -46,9 +46,6 @@ export default function Navbar() {
           </div>
         </Link>
         <nav className='flex items-center gap-4 font-semibold'>
-          <Link to='/Profile' className='text-lg'>
-            Profile
-          </Link>
           <Link to='/Posts' className='text-lg'>
             Post
           </Link>

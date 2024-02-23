@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../components/ui/Button';
 
-export default function NewPost() {
+export default function ModifyPost() {
   const [isChecked, setChecked] = useState(false);
 
   const handleCheckboxChange = (event) => {

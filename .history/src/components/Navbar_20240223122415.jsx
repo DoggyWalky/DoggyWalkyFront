@@ -46,9 +46,6 @@ export default function Navbar() {
           </div>
         </Link>
         <nav className='flex items-center gap-4 font-semibold'>
-          <Link to='/Profile' className='text-lg'>
-            Profile
-          </Link>
           <Link to='/Posts' className='text-lg'>
             Post
           </Link>
@@ -58,7 +55,7 @@ export default function Navbar() {
           <Link to='/Login' className='text-lg'>
             Login
           </Link>
-          <Link to='/ModifyPost' className='text-lg'>
+          <Link to='/Login' className='text-lg'>
             <Button text={'Resister'} />
           </Link>
         </nav>

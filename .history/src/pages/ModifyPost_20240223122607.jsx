@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '../components/ui/Button';
 
-export default function NewPost() {
+export default function ModifyPost() {
   const [isChecked, setChecked] = useState(false);
 
   const handleCheckboxChange = (event) => {
@@ -54,7 +54,7 @@ export default function NewPost() {
             placeholder='내용을 입력해주세요'
             className='input input-bordered w-full max-w-xs'
           />
-          <Button text={'Login'} />
+          <Button text={'수정하기'} />
         </form>
       </div>
     </section>
