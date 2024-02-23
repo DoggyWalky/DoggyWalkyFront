@@ -55,9 +55,8 @@ export default function Navbar() {
           <Link to='/Login' className='text-lg'>
             Login
           </Link>
-          <Link to='/ModifyPost' className='text-lg'>
-            <Button text={'Resister'} />
-          </Link>
+          <Button text={'Resister'} />
+          <Link to='/Login' className='text-lg'></Link>
         </nav>
       </header>
     </div>

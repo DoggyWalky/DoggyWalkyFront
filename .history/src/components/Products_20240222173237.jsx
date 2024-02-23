@@ -20,6 +20,11 @@ export default function Products() {
             aria-label='1'
             defaultChecked={true}
           />
+          <div>
+            <input type='radio' name='radio-1' className='radio' checked />
+            <font></font>
+            <input type='radio' name='radio-1' className='radio' />
+          </div>
           <input
             className='join-item btn btn-square'
             type='radio'

@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       { path: '/Posts/new', element: <NewPost /> },
       { path: '/Posts/:id', element: <PostDetail /> },
       { path: '/callback', element: <Profile /> },
-      { path: '/ModifyPost', element: <ModifyPost /> },
+      { path: '/ModifyPost/:id', element: <ModifyPost /> },
     ],
   },
 ]);
