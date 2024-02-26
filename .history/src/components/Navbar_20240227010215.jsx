@@ -64,6 +64,9 @@ export default function Navbar() {
             <HiPencilSquare />
           </Link>
           <Button onClick={NaverLogin} text={'Login'} />
+          <Link to='/ModifyPost' className='text-lg'>
+            <Button text={'Resister'} />
+          </Link>
         </nav>
       </header>
     </div>
