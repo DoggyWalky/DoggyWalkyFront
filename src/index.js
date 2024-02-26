@@ -12,6 +12,7 @@ import PostDetail from './pages/PostDetail';
 import Profile from './pages/Profile';
 import ModifyPost from './pages/ModifyPost';
 import Chat from './pages/Chat';
+import ReviewInput from './components/ReviewInput';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
       { path: '/ModifyPost', element: <ModifyPost /> },
     ],
   },
-  { path: '/chat', element: <Chat /> },
+  { path: '/Chat', element: <Chat /> },
+  { path: '/ReviewInput', element: <ReviewInput /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

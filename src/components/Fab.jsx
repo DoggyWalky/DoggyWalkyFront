@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FloatingButton() {
+function FabButton() {
   const openNewWindow = () => {
     window.open('/chat', '_blank', 'width=600,height=600');
   };
@@ -23,4 +23,4 @@ function FloatingButton() {
   );
 }
 
-export default FloatingButton;
+export default FabButton;
