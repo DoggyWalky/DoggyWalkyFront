@@ -11,9 +11,17 @@ export default function Navbar() {
   const REDIRECT_URI = 'http://localhost:3000/callback'; // Callback URL
   const STATE = 'false';
   const NAVER_AUTH_URL = `http://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&&state=${STATE}&redirect_uri=${REDIRECT_URI}'`;
+  const openNewWindow = () => {
+    window.open('/chat', '_blank', 'width=600,height=600');
+  };
 
   const NaverLogin = () => {
     window.location.href = NAVER_AUTH_URL;
+  };
+
+  const handleLoginClick = () => {
+    NaverLogin();
+    openNewWindow();
   };
 
   const handleScroll = useCallback(() => {
@@ -63,7 +71,10 @@ export default function Navbar() {
           <Link to='/Posts/new' className='text-2xl'>
             <HiPencilSquare />
           </Link>
-          <Button onClick={NaverLogin} text={'Login'} />
+          <Button onClick={handleLoginClick} text={'Login'} />
+          <Link to='/ModifyPost' className='text-lg'>
+            <Button text={'Resister'} />
+          </Link>
         </nav>
       </header>
     </div>
