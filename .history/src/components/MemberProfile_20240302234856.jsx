@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Petcard from './Petcard';
-import { Link } from 'react-router-dom';
 
 const scrollToSection = (id) => {
   const element = document.getElementById(id);
@@ -13,16 +12,7 @@ const scrollToSection = (id) => {
 
 export default function MemberProfile() {
   return (
-    <div className='w-full '>
-      <div className='ml-auto'>
-        <Link to='/ModifyProfile' className='text-lg'>
-          <img
-            src='../images/modify.png'
-            alt='modify'
-            className='w-7 ml-auto mr-7 mb-3'
-          />
-        </Link>
-      </div>
+    <div>
       <div className=' p-4 pt-3 mb-16 items-center  bg-slate-200 shadow-2xl  rounded-3xl'>
         <div className='mx-auto '>
           <img
@@ -35,7 +25,6 @@ export default function MemberProfile() {
           <div className='flex items-baseline justify-center'>
             {/* 닉네임 받아오기 String */}
             <p className='text-2xl font-extrabold mb-5'>아 시츄키울껄</p>
-            {/* nickname */}
             <p className='font-bold'>님</p>
           </div>
           <p>
@@ -45,7 +34,6 @@ export default function MemberProfile() {
             점에서 대형견들 산책을 수월하게 시킬 수 있지 않나 생각합니다. 많은
             관심 부탁드려요~!
           </p>
-          {/* description */}
         </div>
       </div>
 
@@ -71,13 +59,6 @@ export default function MemberProfile() {
       >
         <div className=' '>
           <p className='font-bold text-4xl text-center mb-24 '>등록된 강아지</p>
-          <Link to='/AddPet' className='text-lg'>
-            <img
-              src='../images/add.png'
-              alt='add'
-              className='w-7 mx-auto mb-3'
-            />
-          </Link>
           <div class='snap-x ... flex mb-10 p-10 mx-80  bg-white shadow-2xl rounded-2xl overflow-x-auto'>
             <div class='snap-center ...'>{<Petcard />}</div>
             <div class='snap-center ...'>{<Petcard />}</div>
@@ -90,13 +71,3 @@ export default function MemberProfile() {
     </div>
   );
 }
-//
-// api에 memberId /nickname / description 받아와서
-// {
-//   "memberId": 24,
-//   "nickName": "김강욱",
-//   "description": "기본 자기 소개글을 작성해주시기 바랍니다.",
-//   "createdAt": "2024-02-22 20:33:10",
-//   "updatedAt": "2024-02-22 20:33:10",
-//   "profileImage": "https://doggywalky-bucket.s3.ap-northeast-2.amazonaws.com/basic_user_image.jpg"
-// }

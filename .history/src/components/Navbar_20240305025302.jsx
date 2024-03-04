@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isScroll, setIsScroll] = useState(false);
   const [isHome, setIsHome] = useState(true);
   const location = useLocation();
-
+<<<<<<< HEAD
   const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
   const REDIRECT_URI = 'http://localhost:3000/callback'; // Callback URL
   const STATE = 'false';
@@ -16,6 +16,8 @@ export default function Navbar() {
   const NaverLogin = () => {
     window.location.href = NAVER_AUTH_URL;
   };
+=======
+>>>>>>> 1fee414 (로그인 중...)
 
   const handleScroll = useCallback(() => {
     if (window.scrollY > 0) {

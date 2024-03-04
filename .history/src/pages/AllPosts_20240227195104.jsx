@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from '../components/Search';
-import Posts from '../components/Posts';
+import Products from '../components/Products';
 
 export default function AllPosts() {
   return (

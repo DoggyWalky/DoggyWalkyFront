@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/DoggyWalkyFront.iml" filepath="$PROJECT_DIR$/.idea/DoggyWalkyFront.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/doggywalkyfront.iml" filepath="$PROJECT_DIR$/.idea/doggywalkyfront.iml" />
+>>>>>>> 1fee414 (로그인 중...)
     </modules>
   </component>
 </project>

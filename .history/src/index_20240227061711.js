@@ -13,14 +13,7 @@ import Profile from './pages/Profile';
 import ModifyPost from './pages/ModifyPost';
 import Chat from './pages/Chat';
 import ReviewInput from './components/ReviewInput';
-<<<<<<< HEAD
-import PetcardDetail from './components/PetcardDetail';
-import ModifyProfile from './pages/ModifyProfile';
-import PetRegister from './pages/PetRegister';
-import AddPet from './pages/AddPet';
-=======
 import Login from './pages/Login';
->>>>>>> 1fee414 (로그인 중...)
 
 const router = createBrowserRouter([
   {
@@ -35,14 +28,10 @@ const router = createBrowserRouter([
       { path: '/Posts/id', element: <PostDetail /> },
       { path: '/Profile', element: <Profile /> },
       { path: '/ModifyPost', element: <ModifyPost /> },
-      { path: '/ModifyProfile', element: <ModifyProfile /> },
-      { path: '/AddPet', element: <AddPet /> },
-      { path: '/PetRegister', element: <PetRegister /> },
     ],
   },
   { path: '/Chat', element: <Chat /> },
   { path: '/ReviewInput', element: <ReviewInput /> },
-  { path: '/PetcardDetail', element: <PetcardDetail /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
