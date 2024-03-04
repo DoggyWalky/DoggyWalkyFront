@@ -1,20 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HiPencilSquare } from 'react-icons/hi2';
-import Button from './ui/Button';
+import Login from './member/Login';
 
 export default function Navbar() {
   const [isScroll, setIsScroll] = useState(false);
   const [isHome, setIsHome] = useState(true);
   const location = useLocation();
-  const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
-  const REDIRECT_URI = 'http://localhost:3000/callback'; // Callback URL
-  const STATE = 'false';
-  const NAVER_AUTH_URL = `http://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&&state=${STATE}&redirect_uri=${REDIRECT_URI}`;
-
-  const NaverLogin = () => {
-    window.location.href = NAVER_AUTH_URL;
-  };
 
   const handleScroll = useCallback(() => {
     if (window.scrollY > 0) {
@@ -63,7 +55,7 @@ export default function Navbar() {
           <Link to='/Posts/new' className='text-2xl'>
             <HiPencilSquare />
           </Link>
-          <Button onClick={NaverLogin} text={'Login'} />
+          <Login />
         </nav>
       </header>
     </div>
