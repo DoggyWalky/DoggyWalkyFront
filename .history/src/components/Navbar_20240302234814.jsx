@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HiPencilSquare } from 'react-icons/hi2';
-import Login from './member/Login';
+import naverLogin from './member/naverLogin';
 
 export default function Navbar() {
   const [isScroll, setIsScroll] = useState(false);
@@ -55,7 +55,7 @@ export default function Navbar() {
           <Link to='/Posts/new' className='text-2xl'>
             <HiPencilSquare />
           </Link>
-          <Login />
+          <naverLogin />
         </nav>
       </header>
     </div>
