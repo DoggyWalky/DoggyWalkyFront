@@ -13,7 +13,6 @@ export default function Search() {
     navigate(`/Posts/${text}`);
   };
   useEffect(() => setText(keyword || ''), [keyword]);
-
   const animatedItem = useScrollFadeIn('up', 1, 0.3);
   return (
     <section className=' relative'>

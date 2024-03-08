@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       { path: '/callback', element: <Login /> },
       { path: '/Posts', element: <AllPosts /> },
       { path: '/Posts/new', element: <NewPost /> },
-      { path: '/Posts/id', element: <PostDetail /> },
+      // { path: '/Posts/id', element: <PostDetail /> },
       { path: '/Profile', element: <Profile /> },
       { path: '/ModifyPost', element: <ModifyPost /> },
       { path: '/ModifyProfile', element: <ModifyProfile /> },

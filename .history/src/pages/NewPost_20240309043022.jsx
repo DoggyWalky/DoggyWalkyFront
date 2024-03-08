@@ -6,7 +6,6 @@ export default function NewPost() {
   const [isChecked, setChecked] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
-    size: '',
     image: null,
     pay: '',
     content: '',
@@ -36,7 +35,6 @@ export default function NewPost() {
     try {
       const formDataToSend = new FormData();
       formDataToSend.append('title', formData.title);
-      formDataToSend.append('size', formData.size);
       formDataToSend.append('image', formData.image);
       formDataToSend.append('pay', formData.pay);
       formDataToSend.append('content', formData.content);
@@ -48,10 +46,8 @@ export default function NewPost() {
       });
 
       console.log('게시물 등록 성공:', response.data);
-      // 성공적으로 게시물이 등록된 경우에 대한 처리
     } catch (error) {
       console.error('게시물 등록 오류:', error);
-      // 게시물 등록 중 오류가 발생한 경우에 대한 처리
     }
   };
 

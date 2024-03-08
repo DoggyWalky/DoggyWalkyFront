@@ -39,6 +39,15 @@ const router = createBrowserRouter([
       { path: '/PetRegister', element: <PetRegister /> },
     ],
   },
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <NotFound />,
+    children: [
+      { index: true, path: '/', element: <AllPosts /> },
+      { path: '/Posts/id', element: <PostDetail /> },
+    ],
+  },
   { path: '/Chat', element: <Chat /> },
   { path: '/ReviewInput', element: <ReviewInput /> },
   { path: '/PetcardDetail', element: <PetcardDetail /> },

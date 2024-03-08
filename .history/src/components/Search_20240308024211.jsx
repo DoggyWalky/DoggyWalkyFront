@@ -1,19 +1,16 @@
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import { IoSearchSharp } from 'react-icons/io5';
 import useScrollFadeIn from '../hooks/useScrollFadeIn';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Search() {
-  const { keyword } = useParams();
   const navigate = useNavigate();
   const [text, setText] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate(`/Posts/${text}`);
   };
-  useEffect(() => setText(keyword || ''), [keyword]);
-
   const animatedItem = useScrollFadeIn('up', 1, 0.3);
   return (
     <section className=' relative'>
