@@ -1,5 +1,5 @@
 // Login.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -10,7 +10,9 @@ const Login = () => {
 
   const authCode = searchParams.get('code');
 
-  useLoginEffect(authCode, setLoading);
+  useEffect(() => {
+    useLoginEffect(authCode, setLoading);
+  }, [authCode, useLoginEffect, setLoading]);
 
   return (
     <>

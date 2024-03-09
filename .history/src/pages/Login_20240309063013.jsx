@@ -1,16 +1,15 @@
-// Login.js
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext'; // import useAuth from AuthContext.js
 
 const Login = () => {
   const [searchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
-  const { useLoginEffect } = useAuth();
 
   const authCode = searchParams.get('code');
+  const { useLoginEffect } = useAuth(); // destructure useLoginEffect from useAuth
 
-  useLoginEffect(authCode, setLoading);
+  useLoginEffect(authCode, setLoading); // use useLoginEffect from AuthContext
 
   return (
     <>

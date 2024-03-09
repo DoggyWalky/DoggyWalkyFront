@@ -11,7 +11,7 @@ function App() {
       <Outlet />
       <Footer />
       <Fab />
-    </AuthProvider>
+    </Auth>
   );
 }
 

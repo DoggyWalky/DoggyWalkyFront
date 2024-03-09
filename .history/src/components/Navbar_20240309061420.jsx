@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HiPencilSquare } from 'react-icons/hi2';
 import Login from './member/Login';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 export default function Navbar() {
   const [isScroll, setIsScroll] = useState(false);

@@ -6,6 +6,7 @@ export async function naverLogin(authCode) {
     const response = await axiosInstance.get(
       `/auth/naver/callback?code=${authCode}`
     );
+
     return response;
   } catch (error) {
     throw new Error('Failed to load data');

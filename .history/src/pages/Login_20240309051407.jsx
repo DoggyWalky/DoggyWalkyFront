@@ -1,23 +1,21 @@
 // Login.js
 import React, { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import LoginEffect from '../api/userAPI';
 
 const Login = () => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const { useLoginEffect } = useAuth();
 
   const authCode = searchParams.get('code');
-
-  useLoginEffect(authCode, setLoading);
 
   return (
     <>
       {loading ? (
         <p className='my-28'>로그인 중...</p>
       ) : (
-        <div>hi {authCode}</div>
+        <div>hi{authCode}</div>
       )}
     </>
   );
