@@ -1,6 +1,10 @@
 import { useState } from 'react';
-const PageWithLogin= ({ children }) => {
 
+interface WithoutAuthProps {
+    children: React.ReactNode;
+}
+
+const PageWithLogin : React.FC<WithoutAuthProps> = ({ children }) => {
 
     const [isLogged, setIsLogged] = useState(true); //localstorage에서 받아오기
     if (!isLogged) {

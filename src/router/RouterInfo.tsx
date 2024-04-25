@@ -19,7 +19,21 @@ import PageWithoutLogin from "../pages/PageWithoutLogin";
 
 import { createBrowserRouter } from 'react-router-dom'
 
-export const RouterInfo= [
+export interface RouterItem {
+    path: string;
+    element: React.ReactNode;
+    withAuth: boolean;
+    errorElement? : React.ReactNode;
+    children?: ChildItem[];
+
+}
+export interface ChildItem {
+    path: string;
+    index?:boolean;
+    element: React.ReactNode;
+}
+
+export const RouterInfo : RouterItem[] = [
         {
             path: '/',
             element: <Layout />,

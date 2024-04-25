@@ -1,5 +1,7 @@
-
-const PageWithoutLogin = ({ children }) => {
+interface AuthProps {
+    children: React.ReactNode;
+}
+const PageWithoutLogin: React.FC<AuthProps> = ({ children }) => {
     return (
         <>
             without auth
