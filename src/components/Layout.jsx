@@ -1,9 +1,9 @@
+import Footer from './Footer';
+import Navbar from './Navbar';
+import Fab from './Fab';
 import { Outlet } from 'react-router-dom';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
-import Fab from '../components/Fab';
 
-const Layout = () => {
+function Layout() {
   return (
     <>
       <Navbar />
@@ -12,6 +12,6 @@ const Layout = () => {
       <Fab />
     </>
   );
-};
+}
 
 export default Layout;
