@@ -13,7 +13,7 @@ import Profile from './pages/Profile';
 import ModifyPost from './pages/ModifyPost';
 import Chat from './pages/Chat';
 import ReviewInput from './components/ReviewInput';
-
+import Navbar from './components/Navbar';
 import Login from './pages/Login';
 
 import PetcardDetail from './components/PetcardDetail';
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );
 
