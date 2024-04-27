@@ -1,14 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PostCard from './PostCard';
 
-export default function Posts() {
+export default function Posts({posts}) {
   return (
     <>
       <ul className='grid grid-cols-1 md:grid-cols-3 lg-grid-cols-4 gap-10 p-6 mb-10'>
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        {posts.map((post) => <PostCard key={post.id} />)}
       </ul>
       <div className='flex justify-center mb-20' /*페이지네이션 */>
         <div className='join'>
