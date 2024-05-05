@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 
 declare global {
   interface Window {
@@ -6,73 +6,107 @@ declare global {
   }
 }
 
+interface Position {
+  coords: {
+    latitude: number;
+    longitude: number;
+  };
+  timestamp: number;
+}
+
+interface Marker {
+  getPosition: () => any;
+  setMap: (map: any | null) => void;
+}
+
 export default function MapContainer() {
-  const [map, setMap] = useState<any>();
-  const [marker, setMarker] = useState<any>();
+  const [map, setMap] = useState<any | null>(null);
+  const currentMarkerRef = useRef<Marker | null>(null);
+  const [markers, setMarkers] = useState<Marker[]>([]);
+  const [gpsList, setGpsList] = useState<Array<{ jobPostId: number; longitude: number; latitude: number; timestamp: number }>>([]);
+
+  const displayMarker = useCallback((locPosition: any) => {
+    if (currentMarkerRef.current) {
+      currentMarkerRef.current.setMap(null);
+    }
+
+    const newMarker = new window.kakao.maps.Marker({
+      map: map,
+      position: locPosition
+    });
+
+    currentMarkerRef.current = newMarker;
+    if (map) {
+      map.setCenter(locPosition);
+    }
+    setMarkers(prev => {
+      const updatedMarkers = [...prev, newMarker];
+      addLine(updatedMarkers);
+      return updatedMarkers;
+    });
+  }, [map]);
+
+  const success = useCallback((position: Position) => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    const locPosition = new window.kakao.maps.LatLng(lat, lon);
+
+    if (map) {
+      displayMarker(locPosition);
+      setGpsList(prev => [...prev, {
+        jobPostId: 3,
+        longitude: lon,
+        latitude: lat,
+        timestamp: position.timestamp
+      }]);
+    }
+  }, [map, displayMarker]);
 
   useEffect(() => {
     window.kakao.maps.load(() => {
       const container = document.getElementById('map');
       const options = {
-        center: new window.kakao.maps.LatLng(33.450701, 126.570667), // 초기 중심 좌표 (제주시)
-        level: 3,
+        center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3
       };
 
       const mapInstance = new window.kakao.maps.Map(container, options);
       setMap(mapInstance);
-
-      // 접속 위치 가져와서 지도 중심 좌표로 설정
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-            const currentPosition = new window.kakao.maps.LatLng(
-              latitude,
-              longitude
-            );
-            mapInstance.panTo(currentPosition);
-
-            // 마커 생성 및 표시
-            const markerInstance = new window.kakao.maps.Marker({
-              position: currentPosition,
-            });
-            markerInstance.setMap(mapInstance);
-            setMarker(markerInstance);
-
-            // 선 추가 함수 호출
-            addLine([markerInstance]);
-          },
-          () => alert('위치 정보를 가져오는데 실패했습니다.'),
-          {
-            enableHighAccuracy: true,
-            maximumAge: 30000,
-            timeout: 27000,
-          }
-        );
-      } else {
-        alert('Geolocation을 지원하지 않는 브라우저입니다.');
-      }
     });
   }, []);
 
-  function addLine(markers: any[]) {
-    if (markers.length === 0) return;
-
-    const linePath: any[] = [];
-    for (let i = 0; i < markers.length; i++) {
-      linePath.push(markers[i].getPosition());
+  useEffect(() => {
+    if (map) {
+      if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(success, error, {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0,
+        });
+      } else {
+        alert('Geolocation을 지원하지 않는 브라우저입니다.');
+      }
     }
+  }, [map, success]); // map이 설정되면 위치 추적 시작
+
+  const addLine = useCallback((updatedMarkers: Marker[]) => {
+    if (updatedMarkers.length === 0) return;
+
+    const linePath = updatedMarkers.map(marker => marker.getPosition());
 
     const polyline = new window.kakao.maps.Polyline({
       path: linePath,
       strokeWeight: 2,
       strokeColor: 'red',
       strokeOpacity: 0.7,
-      strokeStyle: 'solid',
+      strokeStyle: 'solid'
     });
 
     polyline.setMap(map);
+  }, [map]);
+
+  function error(err: any) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
   return (

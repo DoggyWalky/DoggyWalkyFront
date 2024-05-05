@@ -2,10 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HiPencilSquare } from 'react-icons/hi2';
 import Login from './member/Login';
+import { getCookie } from './member/Cookies';
 
 export default function Navbar() {
   const [isScroll, setIsScroll] = useState(false);
-  const [isHome, setIsHome] = useState(true);
+  const [isHome, setIsHome] = useState(true);;
   const location = useLocation();
 
   const handleScroll = useCallback(() => {
@@ -19,6 +20,18 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+
+    if (getCookie("Authorization")) {
+      console.log("GETCookie")
+      localStorage.setItem("Authorization",getCookie("Authorization"));
+    }
+
+    if (getCookie("Refresh")) {
+      console.log("GETRefreshCookie")
+      localStorage.setItem("Refresh",getCookie("Refresh"))
+    }
+    
+
     //스크롤 이벤트를 추가하고 제거함
     window.addEventListener('mousewheel', handleScroll);
     return () => {
