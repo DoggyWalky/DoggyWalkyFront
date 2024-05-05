@@ -16,7 +16,6 @@ import ReviewInput from '../components/ReviewInput';
 import PetcardDetail from '../components/PetcardDetail';
 import PageWithLogin from '../pages/PageWithLogin';
 import PageWithoutLogin from '../pages/PageWithoutLogin';
-import WalkInquiry from '../pages/WalkInquiry';
 
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -58,7 +57,6 @@ export const RouterInfo: RouterItem[] = [
       { path: '/ModifyProfile', element: <ModifyProfile /> },
       { path: '/AddPet', element: <AddPet /> },
       { path: '/PetRegister', element: <PetRegister /> },
-      { path: '/WalkInquiry', element: <WalkInquiry /> },
     ],
   },
   { path: '/Chat', element: <Chat />, withAuth: true },
@@ -67,7 +65,7 @@ export const RouterInfo: RouterItem[] = [
 ];
 
 export const RouterObj = createBrowserRouter(
-  RouterInfo.map((routerInfo) => {
+  RouterInfo.map(routerInfo => {
     return routerInfo.withAuth
       ? {
           path: routerInfo.path,
