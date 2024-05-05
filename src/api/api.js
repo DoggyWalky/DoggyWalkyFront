@@ -143,9 +143,23 @@ export async function searchPostDetail(boardId) {
   }
 }
 //게시글 조회
-export async function searchPost(searchCondition) {
+// export async function searchPost(searchCondition) {
+//   try {
+//     const response = await axiosInstance(`/api/job-post/${searchCondition}`);
+//     const data = response.data;
+//     return data;
+//   } catch (error) {
+//     throw new Error('Failed to load data');
+//   }
+// }
+export async function searchPost(searchCondition, filterOptions) {
   try {
-    const response = await axiosInstance(`/api/job-post/${searchCondition}`);
+    let url = `/api/job-post/${searchCondition}`;
+    if (filterOptions) {
+      // 필터 옵션이 있는 경우 쿼리 문자열로 추가
+      url += `?filter=${JSON.stringify(filterOptions)}`;
+    }
+    const response = await axiosInstance(url);
     const data = response.data;
     return data;
   } catch (error) {
@@ -156,7 +170,7 @@ export async function searchPost(searchCondition) {
 export async function registerPost() {
   try {
     const response = await axiosInstance.post(
-      `/owners/dogs`,
+      `/owners/dogs?dogsize=small,mid'&content=''&status=WATIING`,
       {
         title: '',
         content: '.',
