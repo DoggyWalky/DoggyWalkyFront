@@ -1,4 +1,4 @@
-import {RouterObj} from "./router/RouterInfo";
+import {RouterObj} from "./router/RouterInfo.tsx";
 import {RouterProvider} from "react-router-dom";
 import React from "react";
 

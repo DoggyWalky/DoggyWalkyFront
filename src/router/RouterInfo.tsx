@@ -14,8 +14,8 @@ import PetRegister from "../pages/PetRegister";
 import Chat from "../pages/Chat";
 import ReviewInput from "../components/ReviewInput";
 import PetcardDetail from "../components/PetcardDetail";
-import PageWithLogin from "../pages/PageWithLogin";
-import PageWithoutLogin from "../pages/PageWithoutLogin";
+import PageWithLogin from "../pages/PageWithLogin.tsx";
+import PageWithoutLogin from "../pages/PageWithoutLogin.tsx";
 
 import { createBrowserRouter } from 'react-router-dom'
 
