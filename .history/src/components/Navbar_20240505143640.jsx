@@ -20,15 +20,11 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (getCookie('Authorization')) {
-      console.log('GETCookie');
-      localStorage.setItem('Authorization', getCookie('Authorization'));
-    }
+    // 로그인 시 저장된 쿠키 값 localStorage 저장
 
-    if (getCookie('Refresh')) {
-      console.log('GETRefreshCookie');
-      localStorage.setItem('Refresh', getCookie('Refresh'));
-    }
+    localStorage.setItem('Authorization', getCookie('Authorization'));
+    localStorage.setItem('Refresh', getCookie('Refresh'));
+
     //스크롤 이벤트를 추가하고 제거함
     window.addEventListener('mousewheel', handleScroll);
     return () => {
