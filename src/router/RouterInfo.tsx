@@ -20,6 +20,7 @@ import MyPage from 'pages/MyPage';
 import AppListOwn from 'components/AppListOwn';
 import RequestList from 'components/RequestList';
 import DeleteMember from 'components/DeleteMember';
+import WalkInquiry from '../pages/WalkInquiry';
 
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -60,17 +61,18 @@ export const RouterInfo: RouterItem[] = [
       { path: '/ModifyProfile', element: <ModifyProfile /> },
       { path: '/AddPet', element: <AddPet /> },
       { path: '/PetRegister', element: <PetRegister /> },
+      { path: '/WalkInquiry', element: <WalkInquiry /> },
     ],
   },
   {
-    path: '/MyPage',
+    path: '/MyProfile',
     element: <MyPage />,
     withAuth: true,
     children: [
-      { path: '/MyPage', element: <Profile /> },
-      { path: '/MyPage/ApplyList', element: <AppListOwn/> },
-      { path: '/MyPage/RequestList', element: <RequestList/>  },
-      { path: '/MyPage/DeleteMember', element: <DeleteMember/> }
+      { path: '/MyProfile', element: <Profile /> },
+      { path: '/MyProfile/ApplyList', element: <AppListOwn/> },
+      { path: '/MyProfile/RequestList', element: <RequestList/>  },
+      { path: '/MyProfile/DeleteMember', element: <DeleteMember/> }
     ]
   },
   { path: '/Chat', element: <Chat />, withAuth: true },
@@ -79,7 +81,7 @@ export const RouterInfo: RouterItem[] = [
 ];
 
 export const RouterObj = createBrowserRouter(
-  RouterInfo.map(routerInfo => {
+  RouterInfo.map((routerInfo) => {
     return routerInfo.withAuth
       ? {
           path: routerInfo.path,

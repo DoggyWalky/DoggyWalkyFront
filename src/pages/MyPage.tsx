@@ -29,10 +29,10 @@ const MyPage:React.FC = () => {
                 </div>
                     <div>
                         <ul className="py-2">
-                            <Link to={'/MyPage'}><li className="hover:bg-gray-400 font-normal hover:text-white rounded-3xl p-4 m-2 cursor-pointer"><p>프로필</p></li></Link>
-                            <Link to={'/MyPage/ApplyList'}><li className="hover:bg-gray-400 font-normal hover:text-white rounded-3xl p-4 m-2 cursor-pointer"><p className="w-full">산책 신청 목록</p></li></Link>
-                            <Link to={'/MyPage/RequestList'}><li className="hover:bg-gray-400 font-normal hover:text-white rounded-3xl p-4 m-2 cursor-pointer"><p className="w-full">나의 산책 신청 목록</p></li></Link>
-                            <Link to={'/MyPage/DeleteMember'}><li className="hover:bg-gray-400 font-normal hover:text-white rounded-3xl p-4 m-2 cursor-pointer"><p className="w-full">회원 탈퇴</p></li></Link>
+                            <Link to={'/MyProfile'}><li className="hover:bg-gray-400 font-normal hover:text-white rounded-3xl p-4 m-2 cursor-pointer"><p>프로필</p></li></Link>
+                            <Link to={'/MyProfile/ApplyList'}><li className="hover:bg-gray-400 font-normal hover:text-white rounded-3xl p-4 m-2 cursor-pointer"><p className="w-full">산책 신청 목록</p></li></Link>
+                            <Link to={'/MyProfile/RequestList'}><li className="hover:bg-gray-400 font-normal hover:text-white rounded-3xl p-4 m-2 cursor-pointer"><p className="w-full">나의 산책 신청 목록</p></li></Link>
+                            <Link to={'/MyProfile/DeleteMember'}><li className="hover:bg-gray-400 font-normal hover:text-white rounded-3xl p-4 m-2 cursor-pointer"><p className="w-full">회원 탈퇴</p></li></Link>
                         </ul>
                     </div>
                 </div>
