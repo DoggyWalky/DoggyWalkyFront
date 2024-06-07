@@ -15,7 +15,7 @@ export default function PostRegion({onComplete}) {
     
     return (
         <>
-            <DaumPostcode onComplete={onComplete}/>
+            <DaumPostcode onComplete={onComplete} />
         </>
     )
 }

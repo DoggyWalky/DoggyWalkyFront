@@ -115,13 +115,15 @@ export async function login(board-id) {
 //게시글 조회
 export async function login(search-condition) {
   try {
-    const response = await axiosInstance('/api/job-post/${search-condition}');
+    const response = await axiosInstance(`/api/job-post/${search-condition}`);
     const data = response.data;
     return data;
   } catch (error) {
     throw new Error('Failed to load data');
   }
 }
+// 내 게시글 조회
+
 //게시글 등록
 //게시글 수정
 export async function changeReview(board-id) {

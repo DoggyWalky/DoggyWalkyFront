@@ -1,21 +1,23 @@
 import React from 'react';
-import MemberProfile from '../components/MemberProfile';
-import Review from '../components/Review';
+import * as api from '../api/api';
+import MemberProfile from './MemberProfile';
+import Review from './Review';
 
-function ReviewInputButton() {
+const ReviewInputButton: React.FC = () => {
+  
   const openNewWindow = () => {
     window.open('/ReviewInput', '_blank', 'width=400,height=600'); // /ReviewInput 경로로 가로400 세로600인 새윈도우창으로 띄움
   };
 
   return (
     <>
-      <div className='mt-28 w-3/4 m-auto'>
-        <div className=' '>
+      <div>
+        <div>
           <MemberProfile />
         </div>
         <div id='section2'>
           {/* className='m-auto border-t-4 border-brand ' */}
-          <div className='flex items-center justify-center pt-28 mb-12'>
+          <div className='flex items-center justify-center'>
             <p className='font-bold text-4xl text-center  m-auto'>후기</p>
             <button>
               <img
@@ -26,12 +28,12 @@ function ReviewInputButton() {
               />
             </button>
           </div>
-          <div class='snap-x ... flex mb-48 overflow-x-auto p-4 shadow-2xl rounded-2xl'>
-            <div class='snap-center ...'>{<Review />}</div>
-            <div class='snap-center ...'>{<Review />}</div>
-            <div class='snap-center ...'>{<Review />}</div>
-            <div class='snap-center ...'>{<Review />}</div>
-            <div class='snap-center ...'>{<Review />}</div>
+          <div className='snap-x ... flex mb-48 overflow-x-auto p-4 shadow-2xl rounded-2xl'>
+            <div className='snap-center ...'>{<Review />}</div>
+            <div className='snap-center ...'>{<Review />}</div>
+            <div className='snap-center ...'>{<Review />}</div>
+            <div className='snap-center ...'>{<Review />}</div>
+            <div className='snap-center ...'>{<Review />}</div>
           </div>
         </div>
       </div>

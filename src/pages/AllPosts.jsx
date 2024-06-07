@@ -41,20 +41,21 @@ api.searchPost
     "fileImage" : string,
     "Statue" : string,
     "DogKind" : string,
-    "InsertDate" : date 
+    "insertDate" : date 
   }
 ]
 */
 export default function AllPosts() {
   const navigate = useNavigate();
-  // URL에서 검색 키워드를 가져오기 위해 useParams 훅 사용
-  const { keyword } = useParams();
   // 검색된 게시물을 저장하기 위한 상태
   const [searchedPosts, setSearchedPosts] = useState([]);
   // 정렬 상태 관리
   const [sortOption, setSortOption] = useState();
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const [isFilter, setIsFilter] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearchButtonClicked, setIsSearchButtonClicked] = useState(false);
+  const [searchText, setSearchText] = useState();
   const [DogKind, setDogKind] = useState([]);
   const [Status, setStatus] = useState([]);
   const [bCode, setbCode] = useState();
@@ -65,24 +66,30 @@ export default function AllPosts() {
         // searchPosts에 대한 URL 생성
         const queryParams = new URLSearchParams();
         if (bCode) queryParams.append('bcode', bCode);
-        if (keyword) queryParams.append('keyword', keyword);
+        if (searchText) queryParams.append('keyword', encodeURIComponent(searchText));
         if (sortOption) queryParams.append('sortOption', sortOption);
         if (DogKind.length > 0) {
           DogKind.forEach(kind => queryParams.append('dogSize', kind));
+        } else if(DogKind.length === 0) {
+          queryParams.append('dogSize', null);
         }
         if (Status.length > 0) {
           Status.forEach(status => queryParams.append('status', status));
+        } else if(Status.length === 0) {
+          queryParams.append('status', null);
         }
         const queryString = queryParams.toString();
-        const url = `/api/job-post/search${queryString ? `?${queryString}` : ''}`;
+        const url = `http://localhost:8080/api/job-post/search${queryString ? `?${queryString}` : ''}`;
 
         console.log(url)
+        console.log(searchText)
 
         // API 호출
         const response = await fetch(url);
+        console.log(response)
         const data = await response.json();
         setSearchedPosts(data);
-
+        console.log(data[0]);
         // 필터 적용
         let filteredData = [...data];
         if (DogKind.length > 0) {
@@ -104,10 +111,8 @@ export default function AllPosts() {
       }
     };
     fetchPosts();
-  }, [keyword, sortOption, DogKind, Status, bCode]);
+  }, [searchText, sortOption, DogKind, Status, bCode]);
 
- 
-  
   
   // 정렬 옵션 변경 핸들러
   const handleSortChange = (e) => {
@@ -115,23 +120,23 @@ export default function AllPosts() {
   };
 
   const handleFilterChange = (filters) => {
-    setDogKind(filters.dogSize);
-    setStatus(filters.status);
-
-    // URL 변경
-    const queryParams = new URLSearchParams();
-    queryParams.append('keyword', keyword);
-    queryParams.append('sortOption', sortOption);
-    navigate(`?${queryParams.toString()}`);
+    const newDogKind = filters.dogSize.length > 0 ? filters.dogSize : null;
+    const newStatus = filters.status.length > 0 ? filters.status : null;
+    setDogKind(newDogKind);
+    setStatus(newStatus);
   };
 
-  
-  
-  const handleOpen = () => {
+  const handleFilterOpen = () => {
+    setIsFilter(prev => ! prev); // 클릭 시 필터 옵션 창 열림.
+  } 
+  const handleFilterClose = () => {
+    setIsFilter(false); // 필터 옵션 창 닫힘.
+  } 
+
+  const handlePostOpen = () => {
     setIsOpen(true); // 클릭 시 우편번호 검색 창을 엽니다.
   };
-
-  const handleClose = () => {
+  const handlePostClose = () => {
     setIsOpen(false); // 우편번호 검색 창을 닫습니다.
   };
   
@@ -144,22 +149,31 @@ export default function AllPosts() {
 
   return (
     <>
-      <Search />
-      <div>
-        <select value={sortOption} onChange={handleSortChange}>
-          <option value="desc">최신순</option>
-          <option value="asc">오래된순</option>
-        </select>
-      </div>
-      <PostFilter handleFilterChange={handleFilterChange}/>
-      <Posts posts={filteredPosts} />
-      <button onClick={handleOpen}>클릭</button>
+      <Search onSearch={setSearchText}/>
+      <button onClick={handlePostOpen}>주소 설정</button>
       {isOpen && (
         <div>
           <PostRegion onComplete={handleComplete}/>
-          <button onClick={handleClose}>닫기</button> {/* 우편번호 검색 창 닫기 버튼 */}
+          <button onClick={handlePostClose}>닫기</button> {/* 우편번호 검색 창 닫기 버튼 */}
         </div>
       )}
+      <div Class='flex justify-between relative'>
+        <div>
+          <button className='flex p-2 text-lg font-bold ml-4 text-text' onClick={handleFilterOpen}>
+            <p>필터</p>
+          </button>
+          {isFilter && (
+            <PostFilter  handleFilterChange={handleFilterChange} closefilter={handleFilterClose}/>
+          )}
+        </div>
+        <div>
+          <select className='focus:outline-none text-[#00d7c0] font-bold border border-[#00d7c0] shadow-slate-300 rounded-xl p-2' value={sortOption} onChange={handleSortChange}>
+            <option value="desc">최신순</option>
+            <option value="asc">오래된순</option>
+          </select>
+        </div>
+      </div>
+      <Posts posts={filteredPosts} />
     </>
   );
 }

@@ -43,17 +43,19 @@ api.searchPost
   }
 ]
 */
-
-export default function Search() {
-  const { keyword } = useParams(); // useParams 훅을 사용하여 URL 파라미터에서 keyword 값을 가져옴
-  const navigate = useNavigate(); // useNavigate 훅을 사용하여 페이지 이동을 위한 함수를 가져옴
+// http://localhost:8080/api/jobpost/search
+export default function Search({onSearch}) {
+  const navigate = useNavigate()
   const [text, setText] = useState('');
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate(`/Posts/${text}`); // navigate 함수를 사용하여 `/Posts/${text}` 경로로 이동
+  const handleInputChange = (e) => {
+    setText(e.target.value);
   };
-  useEffect(() => setText(keyword || ''), [keyword]);
+  const handleSearchClick = () => {
+    onSearch(text);
+    console.log(text)
+  };
 
+  console.log(text)
   const animatedItem = useScrollFadeIn('up', 1, 0.3); //애니메이션
   return (
     <section className=' relative'>
@@ -66,7 +68,6 @@ export default function Search() {
       </div>
       <div className='relative h-96 -top-40 z-10 bg-gray-100 rounded-3xl'>
         <form
-          onSubmit={handleSubmit}
           className=' relative w-full max-w-3xl mx-auto -bottom-60 bg-white px-4 pt-2 pb-4 rounded-full'
           {...animatedItem}
         >
@@ -77,13 +78,14 @@ export default function Search() {
               className='appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2  leading-tight focus:outline-none'
               type='text'
               value={text}
-              onChange={(e) => setText(e.target.value)}
+              onChange={handleInputChange}
               placeholder='어떤 강아지와 산책하고 싶으신가요?'
               aria-label='Full name'
             />
             <button
               className='flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-md py-1 px-2 rounded'
               type='button'
+              onClick={handleSearchClick}
             >
               Search
             </button>

@@ -6,7 +6,7 @@ import Login from '../pages/Login';
 import AllPosts from '../pages/AllPosts';
 import NewPost from '../pages/NewPost';
 import PostDetail from '../pages/PostDetail';
-import Profile from '../pages/Profile';
+import Profile from '../components/Profile';
 import ModifyPost from '../pages/ModifyPost';
 import ModifyProfile from '../pages/ModifyProfile';
 import AddPet from '../pages/AddPet';
@@ -16,6 +16,10 @@ import ReviewInput from '../components/ReviewInput';
 import PetcardDetail from '../components/PetcardDetail';
 import PageWithLogin from '../pages/PageWithLogin';
 import PageWithoutLogin from '../pages/PageWithoutLogin';
+import MyPage from 'pages/MyPage';
+import AppListOwn from 'components/AppListOwn';
+import RequestList from 'components/RequestList';
+import DeleteMember from 'components/DeleteMember';
 
 import { createBrowserRouter } from 'react-router-dom';
 
@@ -52,12 +56,22 @@ export const RouterInfo: RouterItem[] = [
       { path: '/Posts', element: <AllPosts /> },
       { path: '/Posts/new', element: <NewPost /> },
       { path: '/Posts/id', element: <PostDetail /> },
-      { path: '/Profile', element: <Profile /> },
       { path: '/ModifyPost', element: <ModifyPost /> },
       { path: '/ModifyProfile', element: <ModifyProfile /> },
       { path: '/AddPet', element: <AddPet /> },
       { path: '/PetRegister', element: <PetRegister /> },
     ],
+  },
+  {
+    path: '/MyPage',
+    element: <MyPage />,
+    withAuth: true,
+    children: [
+      { path: '/MyPage', element: <Profile /> },
+      { path: '/MyPage/ApplyList', element: <AppListOwn/> },
+      { path: '/MyPage/RequestList', element: <RequestList/>  },
+      { path: '/MyPage/DeleteMember', element: <DeleteMember/> }
+    ]
   },
   { path: '/Chat', element: <Chat />, withAuth: true },
   { path: '/ReviewInput', element: <ReviewInput />, withAuth: true },

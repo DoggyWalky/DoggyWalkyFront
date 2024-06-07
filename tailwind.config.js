@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx}'],
+  content: [
+    "./src/**/*.{html,js,jsx,tsx}"
+  ],
   theme: {
     extend: {
       colors: {
@@ -9,6 +11,7 @@ module.exports = {
         text: '#2E3B4B',
         blue: '#224F84',
         lightYellow: '#F6DE7A',
+        
       },
       backgroundImage: {
         banner: `url('../public/images/banner.jpg')`,

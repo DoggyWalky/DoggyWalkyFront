@@ -49,7 +49,7 @@ export default function Navbar() {
           </div>
         </Link>
         <nav className='flex items-center gap-4 font-semibold'>
-          <Link to='/Profile' className='text-lg' /**Profile로 이동 */>
+          <Link to='/MyPage' className='text-lg' /**MyPage로 이동 */>
             Profile
           </Link>
           <Link to='/Posts' className='text-lg' /**Post 이동 */>

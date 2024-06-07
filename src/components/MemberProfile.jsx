@@ -53,7 +53,7 @@ const scrollToSection = (id) => {
 
 export default function MemberProfile() {
   return (
-    <div className='w-full '>
+    <div className='w-full'>
       <div className='ml-auto'>
         <Link to='/ModifyProfile' className='text-lg'>
           <img // 이미지 클릭 시 /ModifyProfile 로 이동
@@ -104,7 +104,7 @@ export default function MemberProfile() {
 
       <div
         id='section1'
-        className='pt-28 pb-40 w-screen bg-slate-100  mx-auto -translate-x-80'
+        className='pt-28 pb-40 bg-slate-100  mx-auto'
       >
         <div className=' '>
           <p className='font-bold text-4xl text-center mb-24 '>등록된 강아지</p>
