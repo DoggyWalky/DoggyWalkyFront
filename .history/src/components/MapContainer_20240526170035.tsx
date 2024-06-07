@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
+import axios from 'axios';
 
 declare global {
   interface Window {
@@ -64,15 +65,23 @@ export default function MapContainer() {
 
       if (map) {
         displayMarker(locPosition);
-        setGpsList((prev) => [
-          ...prev,
-          {
-            jobPostId: 3,
-            longitude: lon,
-            latitude: lat,
-            timestamp: position.timestamp,
-          },
-        ]);
+        const newEntry = {
+          jobPostId: 3,
+          longitude: lon,
+          latitude: lat,
+          timestamp: position.timestamp,
+        };
+        setGpsList((prev) => [...prev, newEntry]);
+
+        // jobPostId를 백엔드로 전송
+        axios
+          .post(`/api/job-post/${newEntry.jobPostId}/walkComplete`, newEntry)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     },
     [map, displayMarker]

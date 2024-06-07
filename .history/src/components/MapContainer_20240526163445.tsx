@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
-import axios from 'axios';
 
 declare global {
   interface Window {
@@ -75,15 +74,6 @@ export default function MapContainer() {
           },
         ]);
       }
-      // jobPostId를 백엔드로 전송
-      axios
-        .post(`/api/job-post/{jobPostId}/walkComplete`, {})
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
     },
     [map, displayMarker]
   );
@@ -140,14 +130,17 @@ export default function MapContainer() {
 
   axios
     .post('/api/job-post/{jobPostId}/walkComplete', {
-      name: 'jobPostId',
+      username: '',
+      password: '',
     })
     .then(function (response) {
-      //좌표저장해달라는 api를 리스폰에 넣어서 보냄 (gps좌표등록 api(리스트형태))
-      console.log(response);
+      // response
     })
     .catch(function (error) {
-      console.log(error);
+      // 오류발생시 실행
+    })
+    .then(function () {
+      // 항상 실행
     });
 
   return (

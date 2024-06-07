@@ -77,7 +77,7 @@ export default function MapContainer() {
       }
       // jobPostId를 백엔드로 전송
       axios
-        .post(`/api/job-post/{jobPostId}/walkComplete`, {})
+        .post(`/api/job-post/${newEntry.jobPostId}/walkComplete`, newEntry)
         .then((response) => {
           console.log(response);
         })
@@ -143,7 +143,6 @@ export default function MapContainer() {
       name: 'jobPostId',
     })
     .then(function (response) {
-      //좌표저장해달라는 api를 리스폰에 넣어서 보냄 (gps좌표등록 api(리스트형태))
       console.log(response);
     })
     .catch(function (error) {

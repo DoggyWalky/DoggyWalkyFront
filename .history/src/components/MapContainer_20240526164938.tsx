@@ -128,6 +128,21 @@ export default function MapContainer() {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
+  axios({
+    url: '/api/job-post/{jobPostId}/walkComplete',
+    method: 'post',
+    data: {
+      name: 'jobPostId',
+      type: 'number',
+    },
+  })
+    .then(function a(response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   return (
     <div>
       <div id='map' style={{ width: '100%', height: '400px' }}></div>

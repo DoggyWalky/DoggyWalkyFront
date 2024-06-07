@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 
 declare global {
   interface Window {
@@ -127,6 +127,21 @@ export default function MapContainer() {
   function error(err: any) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
+
+  axios({
+    url: '/api/job-post/{jobPostId}/walkComplete',
+    method: 'post',
+    data: {
+      name: 'jobPostId',
+      type: number,
+    },
+  })
+    .then(function a(response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
   return (
     <div>
