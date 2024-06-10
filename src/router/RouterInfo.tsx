@@ -12,6 +12,7 @@ import ModifyProfile from '../pages/ModifyProfile';
 import AddPet from '../pages/AddPet';
 import PetRegister from '../pages/PetRegister';
 import Chat from '../pages/Chat';
+import NaverLogin from 'pages/NaverLogin';
 import ReviewInput from '../components/ReviewInput';
 import PetcardDetail from '../components/PetcardDetail';
 import PageWithLogin from '../pages/PageWithLogin';
@@ -64,6 +65,8 @@ export const RouterInfo: RouterItem[] = [
   { path: '/Chat', element: <Chat />, withAuth: true },
   { path: '/ReviewInput', element: <ReviewInput />, withAuth: true },
   { path: '/PetcardDetail', element: <PetcardDetail />, withAuth: true },
+
+  { path: '/NaverLogin', element: <NaverLogin />, withAuth: true },
 ];
 
 export const RouterObj = createBrowserRouter(

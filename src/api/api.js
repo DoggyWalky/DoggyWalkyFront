@@ -4,9 +4,9 @@ const BASEURL = 'http://localhost:8080';
 
 //---------------회원 관련--------------
 //회원정보 조회
-export async function searchMember() {
+export async function searchMember(user_id) {
   try {
-    const response = await axiosInstance('/members');
+    const response = await axiosInstance(`/members/${user_id}`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -357,7 +357,7 @@ export const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(
-  (config) => {
+  config => {
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
     if (accessToken) {
@@ -370,16 +370,16 @@ axiosInstance.interceptors.request.use(
 
     return config;
   },
-  (error) => {
+  error => {
     return Promise.reject(error);
   }
 );
 
 axiosInstance.interceptors.response.use(
-  async (response) => {
+  async response => {
     return response;
   },
-  async (error) => {
+  async error => {
     const originalRequest = await error.config;
     const accessToken = localStorage.getItem('accessToken');
     console.log('interceptor 지나감');
