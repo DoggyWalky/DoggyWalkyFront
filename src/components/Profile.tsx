@@ -1,3 +1,4 @@
+/* 프로필 */
 import React from 'react';
 import * as api from '../api/api';
 import MemberProfile from './MemberProfile';

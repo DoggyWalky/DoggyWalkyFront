@@ -13,8 +13,8 @@ const LoginEffect = ({ authCode, navigate, setLoading }) => {
           const { accessToken, refreshToken } = response.data;
 
           // 토큰을 안전하게 저장합니다 (HttpOnly 쿠키 사용을 고려해보세요)
-          localStorage.setItem('accessToken', accessToken);
-          localStorage.setItem('refreshToken', refreshToken);
+          localStorage.setItem('Authorization', accessToken);
+          localStorage.setItem('Refresh', refreshToken);
 
           // 추가 작업 수행 가능
 

@@ -1,15 +1,9 @@
+/* 프로필 페이지 */
 import React, { useState } from "react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import Fab from 'components/Fab';
-import SideBar from "components/SideBar";
-import Profile from '../components/Profile';
-import AppListOwn from "components/AppListOwn";
-import RequestList from "components/RequestList";
-import NotFound from "./NotFound";
-import { createBrowserRouter } from 'react-router-dom';
-
 
 const MyPage:React.FC = () => {
 

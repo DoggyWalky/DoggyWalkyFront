@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import NotFound from '../pages/NotFound';
 import Home from '../pages/Home';
-import Login from '../pages/Login';
+import NaverLogin from 'pages/NaverLogin';
 import AllPosts from '../pages/AllPosts';
 import NewPost from '../pages/NewPost';
 import PostDetail from '../pages/PostDetail';
@@ -18,7 +18,7 @@ import PageWithLogin from '../pages/PageWithLogin';
 import PageWithoutLogin from '../pages/PageWithoutLogin';
 import MyPage from 'pages/MyPage';
 import AppListOwn from 'components/AppListOwn';
-import RequestList from 'components/RequestList';
+import AppListPt from 'components/AppListPt';
 import DeleteMember from 'components/DeleteMember';
 import WalkInquiry from '../pages/WalkInquiry';
 
@@ -45,7 +45,7 @@ export const RouterInfo: RouterItem[] = [
     withAuth: false,
     children: [
       { index: true, path: '/', element: <Home /> },
-      { path: '/callback', element: <Login /> },
+      { path: '/NaverLogin', element: <NaverLogin /> },
     ],
   },
   {
@@ -71,7 +71,7 @@ export const RouterInfo: RouterItem[] = [
     children: [
       { path: '/MyProfile', element: <Profile /> },
       { path: '/MyProfile/ApplyList', element: <AppListOwn/> },
-      { path: '/MyProfile/RequestList', element: <RequestList/>  },
+      { path: '/MyProfile/RequestList', element: <AppListPt/>  },
       { path: '/MyProfile/DeleteMember', element: <DeleteMember/> }
     ]
   },

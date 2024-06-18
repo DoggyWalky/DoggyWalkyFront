@@ -1,3 +1,4 @@
+/* 회원 탈퇴 */
 import axiosInstance from 'api/api';
 import React, { useState } from 'react';
 
@@ -20,7 +21,7 @@ function getTokenFromLocalStorage(): string | null {
 // 회원 개인정보를 요청하는 함수
 async function fetchMemberProfile(token: string): Promise<string | null> {
   try {
-    const response = await axiosInstance.get('http://localhost:8080/api/members/profile');
+    const response = await axiosInstance.get('/api/members/profile');
 
     setMemberId(response.data.memberId);
     if (response.data.memberId) {

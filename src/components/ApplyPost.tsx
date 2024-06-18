@@ -44,7 +44,7 @@ const ApplyPost: React.FC<AppProps> = ({Token, Total}) => {
       }, [page]);
 
     const handleResponse = async (applyId: number, action: 'accept' | 'refuse') => {
-        const url = `http://localhost:8080/apply/{apply-Id}/${action}/${applyId}`;
+        const url = `/apply/{apply-Id}/${action}/${applyId}`;
         try {
             const response = await fetch(url, {
                 method: 'POST'
@@ -70,8 +70,8 @@ const ApplyPost: React.FC<AppProps> = ({Token, Total}) => {
                     <p className="">2024/05/04</p>
                 </div>
                 <div className="flex p-4">
-                    <button className="w-16 h-12 mr-1 text-base bg-emerald-400 rounded-md bg-gradient-to-t bg-gradient-to-b from-transparent to-emerald-400 hover:bg-emerald-300 hover:shadow-md hover:shadow-gray-300" onClick={() => handleResponse(post.applyId, 'accept')}>승인</button>
-                    <button className="w-16 h-12 ml-1 text-base bg-red-500 rounded-md bg-gradient-to-t bg-gradient-to-b from-transparent to-red-500 hover:bg-red-400 hover:shadow-lg hover:shadow-gray-200" onClick={() => handleResponse(post.applyId, 'refuse')}>거절</button>
+                    <button className="w-16 h-12 mr-1 text-base bg-emerald-400 rounded-md  from-transparent to-emerald-400 hover:bg-emerald-300 hover:shadow-md hover:shadow-gray-300" onClick={() => handleResponse(post.applyId, 'accept')}>승인</button>
+                    <button className="w-16 h-12 ml-1 text-base bg-red-500 rounded-md  from-transparent to-red-500 hover:bg-red-400 hover:shadow-lg hover:shadow-gray-200" onClick={() => handleResponse(post.applyId, 'refuse')}>거절</button>
                 </div>
             </>
         ))}

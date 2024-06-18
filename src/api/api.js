@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASEURL = 'http://localhost:8080';
+const BASEURL = process.env.REACT_APP_BASE_URL;
 
 //---------------회원 관련--------------
 //회원정보 조회
@@ -358,8 +358,8 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const accessToken = localStorage.getItem('accessToken');
-    const refreshToken = localStorage.getItem('refreshToken');
+    const accessToken = localStorage.getItem('Authorization');
+    const refreshToken = localStorage.getItem('Refresh');
     if (accessToken) {
       config.headers['Authorization'] = accessToken;
     }
@@ -381,7 +381,7 @@ axiosInstance.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = await error.config;
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken = localStorage.getItem('Authorization');
     console.log('interceptor 지나감');
 
     // 네트워크 에러 잡아야함
@@ -397,12 +397,12 @@ axiosInstance.interceptors.response.use(
       const newToken = error.response.headers.authorization;
       if (newToken) {
         originalRequest.headers.authorization = newToken;
-        localStorage.setItem('accessToken', newToken);
+        localStorage.setItem('Authorization', newToken);
         return axiosInstance(originalRequest);
       }
       //리프레시 토큰 만료시 - 로그아웃 처리
       else if (error.response.status === 401 && accessToken) {
-        localStorage.removeItem('accessToken');
+        localStorage.removeItem('Authorization');
       }
     }
 
