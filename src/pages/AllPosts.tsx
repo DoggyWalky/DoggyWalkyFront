@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Search from '../components/Search';
 import Posts from '../components/Posts';
 import PostFilter from '../components/PostFilter';
-import PostRegion from 'components/PostRegion';
-import { useNavigate } from 'react-router-dom';
-import * as api from '../api/api';
+import PostRegion from '../components/PostRegion';
 import axiosInstance from '../api/api';
 
 interface Post {
@@ -16,42 +15,43 @@ interface Post {
   status: string;
 }
 
-
 export default function AllPosts() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [searchedPosts, setSearchedPosts] = useState<Post[]>([]);
-  const [sortOption, setSortOption] = useState<string>('desc'); // Adjust type as needed
+  const [sortOption, setSortOption] = useState<string>('desc');
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
   const [isFilter, setIsFilter] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>('');
-  const [DogKind, setDogKind] = useState<string[]>([]); // Adjust type as needed
-  const [Status, setStatus] = useState<string[]>([]); // Adjust type as needed
+  const [DogKind, setDogKind] = useState<string[]>([]);
+  const [Status, setStatus] = useState<string[]>([]);
   const [bCode, setbCode] = useState<string>('');
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const queryParams = new URLSearchParams();
-        if (bCode) queryParams.append('bcode', bCode);
-        if (searchText) queryParams.append('keyword', decodeURIComponent(searchText));
-        if (sortOption) queryParams.append('sortOption', sortOption);
+        const queryParams = new URLSearchParams(location.search);
+
+        if (bCode) queryParams.set('bcode', bCode);
+        if (searchText) queryParams.set('keyword', decodeURIComponent(searchText));
+        if (sortOption) queryParams.set('sortOption', sortOption);
         if (DogKind.length > 0) {
+          queryParams.delete('dogSize');
           DogKind.forEach(kind => queryParams.append('dogSize', kind));
         }
         if (Status.length > 0) {
+          queryParams.delete('status');
           Status.forEach(status => queryParams.append('status', status));
         }
-        
-        for (const [key,value] of queryParams.entries()) {
-          console.log(`${key}: ${value}`);
-        }
 
-        
+        navigate({
+          pathname: location.pathname,
+          search: queryParams.toString(),
+        });
 
-        const response = await axiosInstance.get(`/api/job-post/search${queryParams.toString() ? `?${queryParams.toString()}` : ''}`)
-        // const response = await axiosInstance.get('/api/job-post/search', {params: queryParams})
-        const data =  response.data;
+        const response = await axiosInstance.get(`/api/job-post/search${queryParams.toString() ? `?${queryParams.toString()}` : ''}`);
+        const data = response.data;
         setSearchedPosts(data as Post[]);
 
         let filteredData = [...data] as Post[];
@@ -74,7 +74,7 @@ export default function AllPosts() {
       }
     };
     fetchPosts();
-  }, [searchText, sortOption, DogKind, Status, bCode]);
+  }, [searchText, sortOption, DogKind, Status, bCode, location.search]);
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOption(e.target.value);
@@ -105,7 +105,6 @@ export default function AllPosts() {
     setbCode(bcode);
     setIsOpen(false);
   };
-  console.log(bCode)
 
   return (
     <>
