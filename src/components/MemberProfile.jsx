@@ -53,74 +53,68 @@ const scrollToSection = (id) => {
 
 export default function MemberProfile() {
   return (
-    <div className='w-full'>
+    <div>
       <div className='ml-auto'>
         <Link to='/ModifyProfile' className='text-lg'>
           <img // 이미지 클릭 시 /ModifyProfile 로 이동
             src='../images/modify.png'
             alt='modify'
-            className='w-7 ml-auto mr-7 mb-3'
+            className='w-10 ml-auto mr-6'
           />
         </Link>
       </div>
-      <div className=' p-4 pt-3 mb-16 items-center  bg-slate-200 shadow-2xl  rounded-3xl'>
-        <div className='mx-auto '>
+      <div className='w-4/5 min-h-[540px] max-h-[960px] mx-auto flex flex-wrap justify-center content-between py-8 px-12 bg-white'>
+        <div className='w-[240px] h-[240px] rounded-full overflow-hidden flex justify-center content-center shadow-inner'>
           <img
-            className='rounded-full w-64 mx-auto '
+            className='w-full h-auto'
             src='images/pet.jpg'
             alt='Pet'
           />
         </div>
-        <div className='  text-center   text-lg  p-4 mb-7'>
-          <div className='flex items-baseline justify-center'>
-            <p className='text-2xl font-extrabold mb-5'>아 시츄키울껄</p>
-            <p className='font-bold'>님</p>
-          </div>
-          <p>
+          <p className='w-full text-center text-2xl font-bold'>시츄키울껄</p>
+          <p className='w-full text-center text-lg font-normal line-clamp-2'>
             안녕하세요. 테리와 라이어의 주인입니다! 저도 애견인으로써 산책
             걱정이 이만저만이 아닐 때가 많다는 거 공감합니다. 저희 아이들도
             활동량이 장난이 아니라 저도 자연스레 체력이 늘어나더라구요. 그런
             점에서 대형견들 산책을 수월하게 시킬 수 있지 않나 생각합니다. 많은
             관심 부탁드려요~!
           </p>
-        </div>
+        <div className='flex mx-auto text-lg'>
+          <button
+            className='w-[160px] h-[60px] mx-4 rounded text-center font-semibold border-2 border-brand text-brand shadow-sm hover:scale-[1.02]'
+            onClick={() => scrollToSection('section1')} //요소 클릭 시 section1로 이동
+          >
+            등록된 강아지
+          </button>
+          <button
+            className='w-[160px] h-[60px] mx-4 rounded bg-brand text-center font-bold text-white shadow-sm hover:scale-[1.02]'
+            onClick={() => scrollToSection('section2')} //요소 클릭 시 section2로 이동
+          >
+            후기
+          </button>
       </div>
-
-      <div className=' relative flex -top-24   z-10 w-2/5 h-12 items-center mx-auto  shadow-2xl text-lg bg-white rounded-lg'>
-        <button
-          className=' w-1/2 text-center  font-bold  hover:text-brand hover:scale-150'
-          onClick={() => scrollToSection('section1')} //요소 클릭 시 section1로 이동
-        >
-          등록된 강아지
-        </button>
-        <div className='  divider  divider-horizontal h-10 pt-2 '></div>
-        <button
-          className=' w-1/2  text-center font-bold  hover:text-brand hover:scale-150'
-          onClick={() => scrollToSection('section2')} //요소 클릭 시 section2로 이동
-        >
-          후기
-        </button>
-      </div>
-
+    </div>
       <div
         id='section1'
-        className='pt-28 pb-40 bg-slate-100  mx-auto'
+        className='py-24 px-4 bg-blue  mx-auto'
       >
-        <div className=' '>
-          <p className='font-bold text-4xl text-center mb-24 '>등록된 강아지</p>
-          <Link to='/AddPet' className='text-lg'>
+        <div>
+          <p className='text-white font-bold text-3xl text-center mb-24'>등록된 강아지</p>
+          <div className='bg-white p-10'>
+            <Link to='/AddPet' className='text-lg'>
             <img //이미지 클릭 시 /AddPet 로 이동
               src='../images/add.png'
               alt='add'
-              className='w-7 mx-auto mb-3'
+              className='w-10 mx-auto mb-3'
             />
-          </Link>
-          <div class='snap-x ... flex mb-10 p-10 mx-80  bg-white shadow-2xl rounded-2xl overflow-x-auto'>
-            <div class='snap-center ...'>{<Petcard />}</div>
-            <div class='snap-center ...'>{<Petcard />}</div>
-            <div class='snap-center ...'>{<Petcard />}</div>
-            <div class='snap-center ...'>{<Petcard />}</div>
-            <div class='snap-center ...'>{<Petcard />}</div>
+            </Link>
+            <div class='snap-x ... flex p-10 overflow-x-auto'>
+              <div class='snap-center ...'>{<Petcard />}</div>
+              <div class='snap-center ...'>{<Petcard />}</div>
+              <div class='snap-center ...'>{<Petcard />}</div>
+              <div class='snap-center ...'>{<Petcard />}</div>
+              <div class='snap-center ...'>{<Petcard />}</div>
+            </div>
           </div>
         </div>
       </div>

@@ -45,50 +45,50 @@ const AppListOwn: React.FC = () => {
   const [myApp, setMyApp] = useState<ApplyToken[]>([]);
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [postLength, setPostLength] = useState<TotalItem>({ TotalNumber: 0 });
-  const token = localStorage.getItem("Authorization"); // 토큰을 로컬 스토리지에서 가져옴
 
   useEffect(() => {
       const fetchPosts = async () => {
           try {
-              const response = await axiosInstance.get<Post[]>('/api/job-post/my-post');
-              const postList = response.data;
-              setMyPost(postList)
+              const response = await axiosInstance.get('/api/job-post/my-post?page=2&sort=createdDate,DESC');
+              console.log(response);
+              setMyPost(response.data)
           } catch (error) {
               console.error("Error fetching posts:", error);
           }
       };
       fetchPosts();
-  }, [token]);
+  }, []);
 
-  const handlePostClick = async (post: Post) => {
-    setSelectedPost(post);
-
-    const jobPostId = post.postId;
-
+  const handlePostClick = async () => {
     try {
-        const response = await axiosInstance<ApplyToken[]>(`/apply/jobPost/${jobPostId}`);
-        const applyList = response.data;
-        setMyApp([...applyList]);
-        //setPostLength(applyList.length);
-        console.log("Applications for selected post:", response.data);
+        const response = await axiosInstance.get(`/api/apply/job-post/402?page=0&size=10&sort=createdDate%2CDESC`);
     } catch (error) {
-        console.error("Error fetching applications:", error);
     }
   }  
     return (
-        <div className="flex">
-            <div className="w-1/2 py-4 pr-4">
+        <div className="w-full h-screen flex">
+            <div className="w-1/2 pr-2 pb-24">
                 <h2 className="font-bold text-2xl pb-8">작성 게시글 목록</h2>
-                <div className="h-4/5 overflow-y-scroll shadow-inner rounded-3xl">
-                 
-                <MyPost myPost={myPost} handlePostClick={handlePostClick}/>
+                <div className="h-full p-4 shadow-inner rounded-lg bg-slate-100">
+                    <ul className="h-full pr-4 overflow-y-scroll grid grid-cols-1 gap-y-2">
+                        <MyPost myPost={myPost} handlePostClick={handlePostClick}/>
+                        <MyPost myPost={myPost} handlePostClick={handlePostClick}/>
+                        <MyPost myPost={myPost} handlePostClick={handlePostClick}/>
+                        <MyPost myPost={myPost} handlePostClick={handlePostClick}/>
+                        <MyPost myPost={myPost} handlePostClick={handlePostClick}/>
+                        <MyPost myPost={myPost} handlePostClick={handlePostClick}/>
+                        <MyPost myPost={myPost} handlePostClick={handlePostClick}/>
+                        <MyPost myPost={myPost} handlePostClick={handlePostClick}/>
+                        <MyPost myPost={myPost} handlePostClick={handlePostClick}/>
+                    </ul>
                 </div>
+                
             </div>
-            <div className="w-1/2 py-4 pr-8 pl-4">
+            <div className="w-1/2 pl-2">
                 <h2 className="font-bold text-2xl pb-8">신청 목록 현황</h2>
-                <div className="h-4/5 overflow-y-hidden shadow-inner rounded-3xl flex flex-wrap">
+                <ul className="bg-slate-100 shadow-inner rounded-lg grid gap-y-1">
                 <ApplyPost Token={myApp} Total={postLength} />
-                </div>
+                </ul>
             </div>
         </div>
     )

@@ -21,6 +21,8 @@ import AppListOwn from 'components/AppListOwn';
 import AppListPt from 'components/AppListPt';
 import DeleteMember from 'components/DeleteMember';
 import WalkInquiry from '../pages/WalkInquiry';
+import DaumPostcode from 'react-daum-postcode';
+
 
 import { createBrowserRouter } from 'react-router-dom';
 

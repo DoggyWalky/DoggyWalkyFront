@@ -6,6 +6,7 @@ interface Post {
   title: string;
   fileImage: string;
   insertDate: string;
+  dogSize: string;
   // 추가적인 게시물 정보에 대한 타입을 여기에 추가할 수 있어요.
 }
 
@@ -17,17 +18,86 @@ interface Props {
 const Posts: React.FC<Props> = ({posts}) => {
   return (
     <>
-      <ul className='grid grid-cols-1 md:grid-cols-3 lg-grid-cols-4 gap-10 p-6 mb-10 text-text'>
+      <ul className='grid gap-8 grid-cols-4'>
         {posts.map(post => (
-          <div key={post.memberId} className="w-72 h-72 bg-brand rounded-3xl overflow-hidden flex justify-center items-center relative cursor-pointer shadow-lg shadow-gray-300 hover:scale-[1.02]">
-            <img src={post.fileImage} className='w-76 h-76'/>
-            <div className='font-normal text-sm w-72 h-28 bg-white/30 absolute inset-x-0 bottom-0 pb-2 px-4 shadow-[2px_-5px_20px_5px_rgba(0,0,0,0.1)]'>
-              <h2 className='text-center text-xl font-normal m-3 overflow-hidden truncate'>{post.title}</h2>
-              <p>작성자 {post.memberId}</p>
-              <p>날짜 {post.insertDate}</p>
-            </div>
+          <li key={post.memberId} className="w-[300px] h-[310px] p-[10px] bg-white shadow-lg rounded-2xl flex flex-wrap hover:scale-[1.02] cursor-pointer">
+            <div className="w-[280px] h-[180px] rounded-2xl flex justify-center items-center overflow-hidden shadow-inner-lg">
+                    <img src={post.fileImage} className='w-[300px] h-auto'/>
+                </div>
+              <div className="w-[280px] px-[5px] flex flex-wrap">
+                  <p className="p-2 text-lg font-bold whitespace-nowrap overflow-hidden text-ellipsis">{post.title}</p>
+                  <div className="w-[280px] flex justify-between items-center font-bold text-base">
+                      <p className="text-gray-400 font-medium">아이디{post.memberId}</p>
+                      <p className="text-white bg-amber-400 px-4 py-2 rounded-full shadow-md">소형견</p>
+                    </div>
+                </div>
             {/* 추가적인 게시물 정보 표시 */}
-          </div>
+          </li>
+        ))}
+        {posts.map(post => (
+          <li key={post.memberId} className="w-[300px] h-[310px] p-[10px] bg-white shadow-lg rounded-2xl flex flex-wrap hover:scale-[1.02] cursor-pointer">
+            <div className="w-[280px] h-[180px] rounded-2xl flex justify-center items-center overflow-hidden shadow-inner-lg">
+                    <img src={post.fileImage} className='w-[300px] h-auto'/>
+                </div>
+              <div className="w-[280px] px-[5px] flex flex-wrap">
+                  <p className="p-2 text-lg font-bold whitespace-nowrap overflow-hidden text-ellipsis">{post.title}</p>
+                  <div className="w-[280px] flex justify-between items-center font-bold text-base">
+                      <p className="text-gray-400 font-medium">아이디{post.memberId}</p>
+                      <p className="text-white bg-lime-500 px-4 py-2 rounded-full shadow-md">중형견</p>
+                    </div>
+                </div>
+            {/* 추가적인 게시물 정보 표시 */}
+          </li>
+        ))}
+        {posts.map(post => (
+          <li key={post.memberId} className="w-[300px] h-[310px] p-[10px] bg-white shadow-lg rounded-2xl flex flex-wrap hover:scale-[1.02] cursor-pointer">
+            <div className="w-[280px] h-[180px] rounded-2xl flex justify-center items-center overflow-hidden shadow-inner-lg">
+                    <img src={post.fileImage} className='w-[300px] h-auto'/>
+                </div>
+              <div className="w-[280px] px-[5px] flex flex-wrap">
+                  <p className="p-2 text-lg font-bold whitespace-nowrap overflow-hidden text-ellipsis">{post.title}</p>
+                  <div className="w-[280px] flex justify-between items-center font-bold text-base">
+                      <p className="text-gray-400 font-medium">아이디{post.memberId}</p>
+                      <p className="text-white bg-sky-400 px-4 py-2 rounded-full shadow-md">대형견</p>
+                    </div>
+                </div>
+            {/* 추가적인 게시물 정보 표시 */}
+          </li>
+        ))}
+        {posts.map(post => (
+          <li key={post.memberId} className="w-[300px] h-[310px] p-[10px] bg-white shadow-lg rounded-2xl flex flex-wrap hover:scale-[1.02] cursor-pointer">
+            <div className="w-[280px] h-[180px] rounded-2xl flex justify-center items-center overflow-hidden shadow-inner-lg">
+                    <img src={post.fileImage} className='w-[300px] h-auto'/>
+                </div>
+              <div className="w-[280px] px-[5px] flex flex-wrap">
+                  <p className="p-2 text-text text-lg font-bold whitespace-nowrap overflow-hidden text-ellipsis">{post.title}</p>
+                  <div className="w-[280px] flex justify-between items-center font-bold text-base">
+                      <p className="text-gray-400 font-medium">아이디{post.memberId}</p>
+                      <p className="text-white bg-amber-400 px-4 py-2 rounded-full shadow-md">소형견</p>
+                    </div>
+                </div>
+            {/* 추가적인 게시물 정보 표시 */}
+          </li>
+        ))}
+        {posts.map(post => (
+          <li key={post.memberId} className="w-[300px] h-[310px] p-[10px] bg-white text-text shadow-lg rounded-2xl flex flex-wrap hover:scale-[1.02] duration-100 hover:ease-in-out cursor-pointer">
+            <div className="w-[280px] h-[180px] rounded-2xl flex justify-center items-center overflow-hidden shadow-inner-lg">
+                    <img src={post.fileImage} className='w-[300px] h-auto'/>
+                </div>
+              <div className="w-[280px] px-[5px] flex flex-wrap">
+                  <p className="p-2 text-lg font-bold whitespace-nowrap overflow-hidden text-ellipsis">{post.title}</p>
+                  <div className="w-[280px] flex justify-between items-center font-bold text-base">
+                      <p className="text-gray-400 font-medium">아이디{post.memberId}</p>
+                      {post.dogSize === 
+                        'LARGE' ? <p className="text-white bg-sky-400 px-4 py-2 rounded-full shadow-md">대형견</p>
+                        : (
+                          post.dogSize === 'MEDIUM' ? <p className="text-white bg-lime-500 px-4 py-2 rounded-full shadow-md">중형견</p>
+                          : <p className="text-white bg-amber-400 px-4 py-2 rounded-full shadow-md">소형견</p>
+                        )}
+                    </div>
+                </div>
+            {/* 추가적인 게시물 정보 표시 */}
+          </li>
         ))}
       </ul>
       <div className='flex justify-center mb-20' /*페이지네이션 */>

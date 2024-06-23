@@ -3,7 +3,7 @@ import DaumPostcode from 'react-daum-postcode';
 import RegionMap from './RegionMap';
 
 type Props = {
-  onComplete: (bcode: string) => void;
+  onComplete: (bcode: string) => void,
 };
 
 type Coordinate = {
@@ -12,7 +12,11 @@ type Coordinate = {
 };
 
 const PostRegion: React.FC<Props> = ({ onComplete }) => {
-  const [selectedAddress, setSelectedAddress] = useState<Coordinate[]>([]);
+  const [selectedAddress, setSelectedAddress] = useState<Coordinate | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  // 브라우저 history state를 이용하여 이전 주소 관리
+  const [historyState, setHistoryState] = useState<Coordinate | null>(null);
 
   const handleComplete = (data: { bcode: string, address: string }) => {
     console.log('주소 검색 완료:', data);
@@ -32,38 +36,67 @@ const PostRegion: React.FC<Props> = ({ onComplete }) => {
         };
         console.log('변환된 좌표:', newCoords);
 
-        // 기존 selectedAddress에 새로운 좌표 추가
-        setSelectedAddress([...selectedAddress, newCoords]);
+        // 이전 상태 저장
+        setHistoryState(selectedAddress);
+
+        // 새로운 좌표 설정
+        setSelectedAddress(newCoords);
       } else {
         console.error('지오코더 에러:', status);
+        // 오류 처리를 원하는 방식으로 구현할 수 있습니다.
+        // 예: 사용자에게 오류 메시지를 표시하거나, 기본 좌표를 설정합니다.
+        setSelectedAddress(null); // 예: 오류 발생 시 selectedAddress를 null로 설정
       }
     });
   };
 
   useEffect(() => {
-    console.log('현재 selectedAddress:', selectedAddress);
+    // 브라우저 history 변경 시 실행될 함수
+    const handleHistoryChange = () => {
+      if (historyState) {
+        setSelectedAddress(historyState);
+      }
+    };
+
+    // history 변경 이벤트 리스너 등록
+    window.addEventListener('popstate', handleHistoryChange);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      window.removeEventListener('popstate', handleHistoryChange);
+    };
+  }, [historyState]);
+
+  useEffect(() => {
+    // 선택된 주소가 변경될 때마다 historyState 업데이트
+    if (selectedAddress) {
+      window.history.pushState(selectedAddress, ''); // 브라우저 history 업데이트
+    }
   }, [selectedAddress]);
 
   return (
     <div>
-      <DaumPostcode
-        onComplete={handleComplete}
-        autoClose
-        animation
-        defaultQuery="대한민국" // 초기 검색지역 설정
-        theme={{
-          bgColor: "#f5f5f5", // 배경 색상
-          searchBgColor: "#ffffff", // 검색창 배경 색상
-          postcodeTextColor: "#333333", // 우편번호 글자 색상
-          outlineColor: "#e0e0e0", // 외곽선 색상
-        }}
-      />
-      {selectedAddress.length > 0 && (
-        <RegionMap selectedAddress={selectedAddress} />
-      )}
+      <p onClick={() => setIsOpen(true)} className='cursor-pointer hover:underline'>어디서 산책하고 싶으신가요?</p>
+      {
+        isOpen === true 
+        ?
+        <DaumPostcode
+          onComplete={handleComplete}
+          autoClose
+          animation
+          defaultQuery="대한민국" // 초기 검색지역 설정
+          theme={{
+            bgColor: "#f5f5f5", // 배경 색상
+            searchBgColor: "#ffffff", // 검색창 배경 색상
+            postcodeTextColor: "#333333", // 우편번호 글자 색상
+            outlineColor: "#e0e0e0", // 외곽선 색상
+          }}
+        />
+        : ''
+      }
+      <RegionMap selectedAddress={selectedAddress} />
     </div>
   );
 };
 
 export default PostRegion;
-

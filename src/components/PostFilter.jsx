@@ -44,8 +44,8 @@ export default function PostFilter({ handleFilterChange, closefilter }) {
     
 
     return (
-      <div className="border-4 border-[#4a00ff] rounded-3xl overflow-hidden absolute z-50 shadow-md bg-white">
-        <div className="p-4 flex flex-wrap grid justify-items-start rounded-t-3xl">
+      <div className="border-4 border-blue rounded-2xl overflow-hidden absolute right-32 z-10 shadow-lg bg-white">
+        <div className="p-4 grid justify-items-start rounded-t-2xl">
           <h2 className="mt-2 text-lg font-bold">크기</h2>
           <div className="w-fit flex mt-2 pb-2 border-b">
             <div className="mr-4">
@@ -77,7 +77,7 @@ export default function PostFilter({ handleFilterChange, closefilter }) {
             <p>초기화</p>
           </button>
       </div>
-      <button className="w-72 h-12 text-white font-semibold border border-[#4a00ff] p-2 bg-[#4a00ff]" onClick={applyFilter}>적용하기</button>
+      <button className="w-72 h-14 text-white font-semibold border border-blue p-2 bg-blue" onClick={applyFilter}>적용하기</button>
     </div>
     )
 }

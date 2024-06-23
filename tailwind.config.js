@@ -24,7 +24,12 @@ module.exports = {
       height: {
         newProduct: '80vh',
       },
+      boxShadow: {
+        'inner-lg': 'inset 0 10px 15px -3px rgba(0, 0, 0, 0.1), inset 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        'blue-color': '10px 10px 30px 0px rgba(6,31,77,0.4)'
+
+      },
     },
   },
-  plugins: [require('daisyui')],
+  plugins: [require('daisyui')], 
 };

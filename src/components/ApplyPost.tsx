@@ -61,8 +61,8 @@ const ApplyPost: React.FC<AppProps> = ({Token, Total}) => {
     };
 
  return (
-    <div className="flex mx-auto p-2">
-        {Token.map(post => (
+    <div>
+        {/* {Token.map(post => (
             <>
                 <div key={post.jobPostId} className="cursor-pointer flex items-center bg-slate-100 text-base rounded-xl p-4">
                     <img src="../images/profile.jpg" className="w-12 h-12 rounded-full"/>
@@ -74,7 +74,62 @@ const ApplyPost: React.FC<AppProps> = ({Token, Total}) => {
                     <button className="w-16 h-12 ml-1 text-base bg-red-500 rounded-md  from-transparent to-red-500 hover:bg-red-400 hover:shadow-lg hover:shadow-gray-200" onClick={() => handleResponse(post.applyId, 'refuse')}>거절</button>
                 </div>
             </>
-        ))}
+        ))} */}
+        <li className="flex justify-between">
+            <div className="cursor-pointer flex items-center text-base rounded-xl p-4">
+                <img src="../images/profile.jpg" className="w-12 h-12 rounded-full"/>
+                <p className="px-4 text-nowrap text-ellipsis overflow-hidden">닉네임</p>
+                <p className="">2024/05/04</p>
+            </div>
+            <div className="flex p-4">
+                <button className="w-16 h-12 mr-1 text-base bg-emerald-400 rounded-md  from-transparent to-emerald-400 hover:bg-emerald-300 hover:shadow-md hover:shadow-gray-300">승인</button>
+                <button className="w-16 h-12 ml-1 text-base bg-red-500 rounded-md  from-transparent to-red-500 hover:bg-red-400 hover:shadow-lg hover:shadow-gray-200">거절</button>
+            </div>
+        </li>
+        <li className="flex justify-between">
+            <div className="cursor-pointer flex items-center text-base rounded-xl p-4">
+                <img src="../images/profile.jpg" className="w-12 h-12 rounded-full"/>
+                <p className="px-4 text-nowrap text-ellipsis overflow-hidden">닉네임</p>
+                <p className="">2024/05/04</p>
+            </div>
+            <div className="flex p-4">
+                <button className="w-16 h-12 mr-1 text-base bg-emerald-400 rounded-md  from-transparent to-emerald-400 hover:bg-emerald-300 hover:shadow-md hover:shadow-gray-300">승인</button>
+                <button className="w-16 h-12 ml-1 text-base bg-red-500 rounded-md  from-transparent to-red-500 hover:bg-red-400 hover:shadow-lg hover:shadow-gray-200">거절</button>
+            </div>
+        </li>
+        <li className="flex justify-between">
+            <div className="cursor-pointer flex items-center text-base rounded-xl p-4">
+                <img src="../images/profile.jpg" className="w-12 h-12 rounded-full"/>
+                <p className="px-4 text-nowrap text-ellipsis overflow-hidden">닉네임</p>
+                <p className="">2024/05/04</p>
+            </div>
+            <div className="flex p-4">
+                <button className="w-16 h-12 mr-1 text-base bg-emerald-400 rounded-md  from-transparent to-emerald-400 hover:bg-emerald-300 hover:shadow-md hover:shadow-gray-300">승인</button>
+                <button className="w-16 h-12 ml-1 text-base bg-red-500 rounded-md  from-transparent to-red-500 hover:bg-red-400 hover:shadow-lg hover:shadow-gray-200">거절</button>
+            </div>
+        </li>
+        <li className="flex justify-between">
+            <div className="cursor-pointer flex items-center text-base rounded-xl p-4">
+                <img src="../images/profile.jpg" className="w-12 h-12 rounded-full"/>
+                <p className="px-4 text-nowrap text-ellipsis overflow-hidden">닉네임</p>
+                <p className="">2024/05/04</p>
+            </div>
+            <div className="flex p-4">
+                <button className="w-16 h-12 mr-1 text-base bg-emerald-400 rounded-md  from-transparent to-emerald-400 hover:bg-emerald-300 hover:shadow-md hover:shadow-gray-300">승인</button>
+                <button className="w-16 h-12 ml-1 text-base bg-red-500 rounded-md  from-transparent to-red-500 hover:bg-red-400 hover:shadow-lg hover:shadow-gray-200">거절</button>
+            </div>
+        </li>
+        <li className="flex justify-between">
+            <div className="cursor-pointer flex items-center text-base rounded-xl p-4">
+                <img src="../images/profile.jpg" className="w-12 h-12 rounded-full"/>
+                <p className="px-4 text-nowrap text-ellipsis overflow-hidden">닉네임</p>
+                <p className="">2024/05/04</p>
+            </div>
+            <div className="flex p-4">
+                <button className="w-16 h-12 mr-1 text-base bg-emerald-400 rounded-md  from-transparent to-emerald-400 hover:bg-emerald-300 hover:shadow-md hover:shadow-gray-300">승인</button>
+                <button className="w-16 h-12 ml-1 text-base bg-red-500 rounded-md  from-transparent to-red-500 hover:bg-red-400 hover:shadow-lg hover:shadow-gray-200">거절</button>
+            </div>
+        </li>
         <ApplyPagiNation
                 totalItems={totalItems}
                 itemCountPerPage={itemCountPerPage}
